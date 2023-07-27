@@ -23,18 +23,20 @@
                     </div>
                     <div class="">
                         <input type="text" placeholder="Section" [(ngModel)]="Section" formControlName="Section">
-                        <input type="text" [placeholder]="lastEID" [value]="lastEID" [(ngModel)]="EID"
+                        <input type="text" [placeholder]="lastEID" [(ngModel)]="EID" [value]="lastEID"
                             formControlName="EID" readonly>
                     </div>
                     <div>
-                        <button style="background-color: rgb(255, 38, 0);">Reset</button>
+                        <button style="background-color: rgb(255, 38, 0);" (click)="resetFormFields()">Reset</button>
                         <button type="submit">Save</button>
                     </div>
                 </form>
                 <P style="color: red;">{{showError}}</P>
+
             </div>
             <div class="right">
-                <input type="text" [(ngModel)]="searchTerm" (keyup)="searchEmployees()" placeholder="Search Employees">
+                <input type="text" id="search" [(ngModel)]="searchTerm" (keyup)="searchEmployees()"
+                    placeholder="🔎︎  Search Employees">
                 <div class="table-container">
                     <table>
                         <thead>
@@ -60,41 +62,45 @@
             </div>
         </div>
         <div class="diolog" *ngIf="showDialog">
-            <div class="name">
-                <h1  *ngIf="!showTextBox">{{selectedUser.Name}}</h1>
-                <input type="text" *ngIf="showTextBox" formControlName="Name">
-            </div>
-            <div class="details">
-                <div class="rightdiolog">
-                    <h5>Departmet &nbsp;:</h5>
-                    <h5>E-ID &nbsp;:</h5>
-                    <h5>Phone No &nbsp;:</h5>
-                    <h5>Salary &nbsp;:</h5>
-                    <h5>Gender &nbsp;:</h5>
+            <form [formGroup]="updateEmployeeForm">
+                <div class="name">
+                    <h1 *ngIf="!showTextBox">{{Gender}}&nbsp;{{selectedUser.Name}}</h1>
+                    <input type="text" *ngIf="showTextBox" formControlName="Name" class="blinking-cursor">
                 </div>
-                <div class="leftleftdiolog">
-                    <form (ngSubmit)="onSubmit()" [formGroup]="createEmployeeForm">
+                <div class="details">
+                    <div class="rightdiolog">
+                        <h5>Departmet &nbsp;:</h5>
+                        <h5>E-ID &nbsp;:</h5>
+                        <h5>Phone No &nbsp;:</h5>
+                        <h5>Salary &nbsp;:</h5>
+                        <h5>Gender &nbsp;:</h5>
+                    </div>
+                    <div class="leftleftdiolog">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Section}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="Section">
+                        <input type="text" *ngIf="showTextBox" formControlName="Section" class="blinking-cursor">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.EID}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="EID">
+                        <input type="text" *ngIf="showTextBox" formControlName="EID" class="blinking-cursor">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Phone}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="Phone">
+                        <input type="text" *ngIf="showTextBox" formControlName="Phone" class="blinking-cursor">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Salary}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="Salary">
+                        <input type="text" *ngIf="showTextBox" formControlName="Salary" class="blinking-cursor">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Gender}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="Gender">
-                    </form>
+                        <input type="text" *ngIf="showTextBox" formControlName="Gender" class="blinking-cursor">
+                    </div>
                 </div>
-            </div>
-            <div class="actions">
-
-
-
-                <button id="negative">Delete</button>
-                <button id="positive" (click)="  onEdit(); editAction(employee);">Edit</button>
-                <button id="positive">Save</button>
-                <button id="negative" (click)="toggleDialog(employee)">Cancel</button>
-            </div>
+                <P style="color: #1442e9;">{{showUpdateError}}</P>
+                <div class="actions">
+                    <button *ngIf="!showTextBox" id="negative" (click)="deleteList(selectedUser.id)">Delete <i
+                            class="bi bi-trash3-fill"></i></button>
+                    <button *ngIf="!showTextBox" id="positive" (click)="  onEdit(); editAction(employee);">Edit <i
+                            class="bi bi-pencil-square"></i></button>
+                    <button *ngIf="showTextBox" id="negative" (click)="  onEdit(); editAction(employee);">Cancel <i
+                            class="bi bi-x-octagon-fill"></i></button>
+                    <button *ngIf="showTextBox" id="positive" type="submit" (click)="updateData(selectedUser.id)">Save
+                        <i class="bi bi-clipboard-check-fill"></i></button>
+                    <button class="cancelButton" (click)="toggleDialog(employee)"><i
+                            class="bi bi-x-square"></i></button>
+                </div>
+            </form>
         </div>
     </div>

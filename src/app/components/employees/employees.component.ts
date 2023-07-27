@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import swal from 'sweetalert2';
 
 export class employee {
   id!: any;
   Name!: string;
-  Phone!: number;
+  Phone!: string;
   Section!: string;
-  Salary!: number;
+  Salary!: string;
   EID!: string;
 }
 
@@ -22,13 +23,18 @@ export class EmployeesComponent implements OnInit {
 
   showDialog: boolean = false;
   showTextBox: boolean = false;
+  isButtonDisabled: boolean = false;
+  selectedUser: any | null = null;
 
   Name: string = '';
   Phone: string = '';
   Section: string = '';
   Salary: string = '';
   EID: string = '';
+
+  Gender: string = '';
   showError: string = '';
+  showUpdateError: string = '';
   searchTerm: string = '';
   lastEID: string = '';
 
@@ -36,14 +42,21 @@ export class EmployeesComponent implements OnInit {
   EmployeeList: employee[] = []
 
   createEmployeeForm!: FormGroup;
+  updateEmployeeForm!: FormGroup;
 
-  isButtonDisabled: boolean = false;
-  selectedUser: any | null = null;
-  constructor(public router: Router, public adminService: AdminService, private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(public router: Router,
+    public adminService: AdminService,
+    private http: HttpClient,
+    private formBuilder: FormBuilder) { }
 
   toggleDialog(employee: any) {
-    this.showDialog = !this.showDialog;
     this.selectedUser = employee;
+    if(this.selectedUser.Gender === "male") {
+      this.Gender = "Mr.";
+    } else if (this.selectedUser.Gender === "female"){
+      this.Gender = "Mrs.";
+    }
+    this.showDialog = !this.showDialog;
   }
 
   logout() {
@@ -61,6 +74,16 @@ export class EmployeesComponent implements OnInit {
       EID: [''],
       Gender: ['']
     });
+
+    this.updateEmployeeForm = this.formBuilder.group({
+      Name: [''],
+      Phone: [''],
+      Section: [''],
+      Salary: [''],
+      EID: [''],
+      Gender: ['']
+    });
+
   }
 
   onSubmit() {
@@ -69,18 +92,23 @@ export class EmployeesComponent implements OnInit {
 
   Create() {
     this.createEmployeeForm.value.EID = this.lastEID;
-    this.adminService.postEmployeeData(this.createEmployeeForm.value).subscribe(resp => {
-      console.log(resp);
-      this.createEmployeeForm.reset();
-      this.ngOnInit();
-    })
+    this.adminService.postEmployeeData(this.createEmployeeForm.value)
+      .subscribe(resp => {
+        console.log(resp);
+        this.resetFormFields();
+        this.ngOnInit();
+      })
+  }
+
+  resetFormFields() {
+    this.createEmployeeForm.reset();
   }
 
   getAll(): void {
     this.adminService.getEmployeeData().subscribe(resp => {
       this.EmployeeList = resp;
-      console.log(resp)
-      this.getLastEID()
+      console.log(resp);
+      this.getLastEID();
     })
   }
 
@@ -88,23 +116,25 @@ export class EmployeesComponent implements OnInit {
     this.adminService.deleteEmployeeData(id).subscribe(
       result => {
         console.log(result);
-        alert('Item Deleted Successfully');
       }
     );
     this.getAll();
+    this.showDialog = !this.showDialog;
   }
 
   updateData(id: number) {
-    this.adminService.updateEmployeeData(id, this.createEmployeeForm).subscribe(
-      result => console.log(result)
+    this.adminService.updateEmployeeData(id, this.updateEmployeeForm.value).subscribe(result =>
+      console.log(result)
     );
+    this.ngOnInit();
+    this.showDialog = false;
+    this.showTextBox = false;
   }
 
   editAction(employee: any) {
-    this.createEmployeeForm.patchValue(employee);
-    console.log(employee);
+    this.updateEmployeeForm.patchValue(employee);
   }
-
+  
   onEdit() {
     this.showTextBox = !this.showTextBox;
   }
@@ -126,7 +156,8 @@ export class EmployeesComponent implements OnInit {
     } else {
       this.adminService.getEmployeeData().subscribe((data: employee[]) => {
         this.EmployeeList = data.filter(employee =>
-          Object.values(employee).some(value => String(value).toLowerCase().includes(this.searchTerm.toLowerCase()))
+          Object.values(employee).some(value =>
+            String(value).toLowerCase().includes(this.searchTerm.toLowerCase()))
         );
       });
     }

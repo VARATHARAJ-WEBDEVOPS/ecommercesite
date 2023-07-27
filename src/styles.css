@@ -23,7 +23,9 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
 }
 
-
+input {
+    outline: none;
+}
 
 html,
 body {
@@ -34,3 +36,4 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+

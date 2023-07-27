@@ -80,7 +80,7 @@
     display: flex;
 }
 
-.left {
+.container .left {
     width: 50%;
     height: 100vh;
     display: flex;
@@ -94,7 +94,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 }
 
 .left * {
@@ -105,7 +105,7 @@
     margin-bottom: 3vh;
 }
 
-.content .container .left input {
+.content .container .left input,#search {
     padding: 2.5vh;
     border: none;
     background-color: #d9e0f8;
@@ -126,16 +126,6 @@ button[disabled] {
     cursor: not-allowed;
   }
 
-  .right input {
-    border: none;
-    border: 2px solid #1442e9;
-    background: none;
-    border-radius: 1vh;
-    padding: 2vh;
-    padding-right: 16vh;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-  }
 
   .right table {
     width: 100%;
@@ -271,16 +261,66 @@ h5{
     color: #fff;
   }
 
-  .leftleftdiolog form {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+  .diolog form {
+    width: 100%;
+    height: 100%;
   }
 
-  .leftleftdiolog form input, .name input{
+  .leftleftdiolog input, .name input{
    background: none;
    margin: 1vh;
    font-size: 4vh;
    border: none;
    padding: none;
   }
+
+  .name input{
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .blinking-cursor {
+    position: relative;
+    outline: none;
+  }
+  
+  .blinking-cursor::after {
+    content: '|';
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: visible;
+    animation: blinking-animation 1s step-end infinite;
+  }
+  
+  @keyframes blinking-animation {
+    from, to {
+      visibility: hidden;
+    }
+    50% {
+      visibility: visible;
+    }
+  }
+  
+.cancelButton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: red !important;
+  font-size: 4vh !important;
+  padding: 0 !important;
+}
+
+#negative {
+  background-color: red !important;
+}
+
+#positive {
+  background-color: #102a85 !important;
+}
+
+#search {
+  width: 80%;
+margin: 5vh;
+}

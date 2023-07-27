@@ -39,83 +39,84 @@
   ],
   "employee": [
     {
-      "Name": "John Smith",
-      "Phone": "+1 123-456-7890",
-      "Salary": 60000,
-      "Section": "Mobile",
-      "EID": "EMP001",
-      "id": 1
-    },
-    {
-      "Name": "Emily Johnson",
-      "Phone": "+1 987-654-3210",
-      "Salary": 55000,
+      "Name": "Arthi",
+      "Phone": "9876543210",
       "Section": "Laptop",
+      "Salary": "55500",
       "EID": "EMP002",
+      "Gender": "female",
       "id": 2
     },
     {
-      "Name": "Michael Williams",
-      "Phone": "+1 555-123-4567",
-      "Salary": 70000,
+      "Name": "varatharaj",
+      "Phone": "5551234567",
       "Section": "Headphones",
+      "Salary": 70000,
       "EID": "EMP003",
+      "Gender": "male",
       "id": 3
     },
     {
-      "Name": "Sophia Brown",
-      "Phone": "+1 888-555-1234",
-      "Salary": 48000,
+      "Name": "Nithya",
+      "Phone": "8885551234",
       "Section": "Hometheaters",
+      "Salary": 48000,
       "EID": "EMP004",
+      "Gender": "female",
       "id": 4
     },
     {
-      "Name": "Matthew Davis",
-      "Phone": "+1 333-222-1111",
-      "Salary": 62000,
+      "Name": "Smilling",
+      "Phone": "3332221111",
       "Section": "Mobile",
+      "Salary": 62000,
       "EID": "EMP005",
+      "Gender": "female",
       "id": 5
     },
     {
       "Name": "Olivia Miller",
-      "Phone": "+1 444-555-6666",
-      "Salary": 57000,
+      "Phone": "4445556666",
       "Section": "Laptop",
+      "Salary": 57000,
       "EID": "EMP006",
+      "Gender": "female",
       "id": 6
     },
     {
       "Name": "Daniel Wilson",
-      "Phone": "+1 777-888-9999",
-      "Salary": 71000,
+      "Phone": "7778889999",
       "Section": "Headphones",
+      "Salary": 71000,
       "EID": "EMP007",
+      "Gender": "female",
       "id": 7
     },
     {
       "Name": "Ava Martinez",
-      "Phone": "+1 909-878-7676",
-      "Salary": 49000,
+      "Phone": "9098787676",
       "Section": "Hometheaters",
+      "Salary": 49000,
       "EID": "EMP008",
+      "Gender": "female",
       "id": 8
     },
     {
       "Name": "James Anderson",
-      "Phone": "+1 234-567-8901",
-      "Salary": 65000,
+      "Phone": "2345678901",
       "Section": "Mobile",
+      "Salary": 65000,
       "EID": "EMP009",
+      "Gender": "male",
       "id": 9
     },
     {
       "Name": "Isabella Lee",
       "Phone": "+1 111-222-3333",
-      "Salary": 58000,
       "Section": "Laptop",
+      "Salary": 58000,
       "EID": "EMP010",
+      "Gender": "",
       "id": 10
     },
     {
@@ -128,10 +129,11 @@
     },
     {
       "Name": "Emma Clark",
-      "Phone": "+1 818-919-1818",
-      "Salary": 50000,
+      "Phone": "8189191818",
       "Section": "Hometheaters",
+      "Salary": 50000,
       "EID": "EMP012",
+      "Gender": "female",
       "id": 12
     },
     {
@@ -152,10 +154,11 @@
     },
     {
       "Name": "Andrew Turner",
-      "Phone": "+1 333-444-5555",
-      "Salary": 75000,
+      "Phone": "+3334445555",
       "Section": "Headphones",
+      "Salary": 75000,
       "EID": "EMP015",
+      "Gender": "male",
       "id": 15
     },
     {
@@ -168,10 +171,11 @@
     },
     {
       "Name": "Joseph Allen",
-      "Phone": "+1 777-666-5555",
-      "Salary": 68000,
+      "Phone": "+7776665555",
       "Section": "Mobile",
+      "Salary": 68000,
       "EID": "EMP017",
+      "Gender": "female",
       "id": 17
     },
     {
@@ -185,17 +189,19 @@
     {
       "Name": "Christopher Hall",
       "Phone": "+1 333-444-5555",
-      "Salary": 77000,
       "Section": "Headphones",
+      "Salary": 77000,
       "EID": "EMP019",
+      "Gender": "female",
       "id": 19
     },
     {
       "Name": "Chloe Green",
       "Phone": "+1 567-888-9999",
-      "Salary": 52000,
       "Section": "Hometheaters",
+      "Salary": 52000,
       "EID": "EMP020",
+      "Gender": "female",
       "id": 20
     },
     {
@@ -204,23 +210,8 @@
       "Section": "mobile",
       "Salary": 20000,
       "EID": "EMP021",
+      "Gender": "male",
       "id": 21
-    },
-    {
-      "Name": "Harish",
-      "Phone": 9360733323,
-      "Section": "laptop",
-      "Salary": 20000,
-      "EID": "EMP022",
-      "id": 22
-    },
-    {
-      "Name": "hari",
-      "Phone": 3333333333,
-      "Section": "laptop",
-      "Salary": 20000,
-      "EID": "EMP023",
-      "id": 23
     }
   ]
 }
