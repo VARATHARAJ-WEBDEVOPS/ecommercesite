@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Gotham !important;
+    font-family: Gotham, Arial, sans-serif  !important;
 }
 
 /* Hide the default number input arrows */
