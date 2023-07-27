@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
     if(localStorage.getItem('token')) {
-      this,this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/dashboard');
     }  
 
     this.registrationForm = this.formBuilder.group({
