@@ -1,0 +1,226 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "vasanth",
+      "email": "varathan2512002@gmail.com",
+      "password": "sivasiva",
+      "number": "9360733323"
+    },
+    {
+      "name": "Varatharaj",
+      "email": "tgreenscreenlyrics@gmail.com",
+      "number": 9360733323,
+      "password": "sivasiva",
+      "id": 2
+    },
+    {
+      "name": "hari",
+      "email": "h@gmai.com",
+      "number": 1234567890,
+      "password": "hari",
+      "id": 3
+    },
+    {
+      "name": "elamaran",
+      "email": "elamaran@gmail.com",
+      "number": 1234567890,
+      "password": "sivasiva",
+      "id": 4
+    }
+  ],
+  "banners": [
+    {
+      "id": 1,
+      "banner1": "https://firebasestorage.googleapis.com/v0/b/fir-auth-39c4c.appspot.com/o/bannerImages%2Fdress.jpg?alt=media&token=c357976f-a723-4be2-8448-988ccbb23dfb",
+      "banner2": "https://firebasestorage.googleapis.com/v0/b/fir-auth-39c4c.appspot.com/o/bannerImages%2Fpoco.jpg?alt=media&token=978ff8ed-bd66-47f0-9ae4-6213dcf809d6",
+      "banner3": "https://firebasestorage.googleapis.com/v0/b/fir-auth-39c4c.appspot.com/o/bannerImages%2Fsony.jpg?alt=media&token=496b2614-52fe-4bc3-8e7a-b18d01264674"
+    }
+  ],
+  "employee": [
+    {
+      "Name": "John Smith",
+      "Phone": "+1 123-456-7890",
+      "Salary": 60000,
+      "Section": "Mobile",
+      "EID": "EMP001",
+      "id": 1
+    },
+    {
+      "Name": "Emily Johnson",
+      "Phone": "+1 987-654-3210",
+      "Salary": 55000,
+      "Section": "Laptop",
+      "EID": "EMP002",
+      "id": 2
+    },
+    {
+      "Name": "Michael Williams",
+      "Phone": "+1 555-123-4567",
+      "Salary": 70000,
+      "Section": "Headphones",
+      "EID": "EMP003",
+      "id": 3
+    },
+    {
+      "Name": "Sophia Brown",
+      "Phone": "+1 888-555-1234",
+      "Salary": 48000,
+      "Section": "Hometheaters",
+      "EID": "EMP004",
+      "id": 4
+    },
+    {
+      "Name": "Matthew Davis",
+      "Phone": "+1 333-222-1111",
+      "Salary": 62000,
+      "Section": "Mobile",
+      "EID": "EMP005",
+      "id": 5
+    },
+    {
+      "Name": "Olivia Miller",
+      "Phone": "+1 444-555-6666",
+      "Salary": 57000,
+      "Section": "Laptop",
+      "EID": "EMP006",
+      "id": 6
+    },
+    {
+      "Name": "Daniel Wilson",
+      "Phone": "+1 777-888-9999",
+      "Salary": 71000,
+      "Section": "Headphones",
+      "EID": "EMP007",
+      "id": 7
+    },
+    {
+      "Name": "Ava Martinez",
+      "Phone": "+1 909-878-7676",
+      "Salary": 49000,
+      "Section": "Hometheaters",
+      "EID": "EMP008",
+      "id": 8
+    },
+    {
+      "Name": "James Anderson",
+      "Phone": "+1 234-567-8901",
+      "Salary": 65000,
+      "Section": "Mobile",
+      "EID": "EMP009",
+      "id": 9
+    },
+    {
+      "Name": "Isabella Lee",
+      "Phone": "+1 111-222-3333",
+      "Salary": 58000,
+      "Section": "Laptop",
+      "EID": "EMP010",
+      "id": 10
+    },
+    {
+      "Name": "David Hernandez",
+      "Phone": "+1 987-654-3211",
+      "Salary": 73000,
+      "Section": "Headphones",
+      "EID": "EMP011",
+      "id": 11
+    },
+    {
+      "Name": "Emma Clark",
+      "Phone": "+1 818-919-1818",
+      "Salary": 50000,
+      "Section": "Hometheaters",
+      "EID": "EMP012",
+      "id": 12
+    },
+    {
+      "Name": "William Lewis",
+      "Phone": "+1 777-666-5555",
+      "Salary": 64000,
+      "Section": "Mobile",
+      "EID": "EMP013",
+      "id": 13
+    },
+    {
+      "Name": "Mia Scott",
+      "Phone": "+1 222-333-4444",
+      "Salary": 59000,
+      "Section": "Laptop",
+      "EID": "EMP014",
+      "id": 14
+    },
+    {
+      "Name": "Andrew Turner",
+      "Phone": "+1 333-444-5555",
+      "Salary": 75000,
+      "Section": "Headphones",
+      "EID": "EMP015",
+      "id": 15
+    },
+    {
+      "Name": "Sofia Phillips",
+      "Phone": "+1 567-888-9999",
+      "Salary": 51000,
+      "Section": "Hometheaters",
+      "EID": "EMP016",
+      "id": 16
+    },
+    {
+      "Name": "Joseph Allen",
+      "Phone": "+1 777-666-5555",
+      "Salary": 68000,
+      "Section": "Mobile",
+      "EID": "EMP017",
+      "id": 17
+    },
+    {
+      "Name": "Grace Young",
+      "Phone": "+1 222-333-4444",
+      "Salary": 60000,
+      "Section": "Laptop",
+      "EID": "EMP018",
+      "id": 18
+    },
+    {
+      "Name": "Christopher Hall",
+      "Phone": "+1 333-444-5555",
+      "Salary": 77000,
+      "Section": "Headphones",
+      "EID": "EMP019",
+      "id": 19
+    },
+    {
+      "Name": "Chloe Green",
+      "Phone": "+1 567-888-9999",
+      "Salary": 52000,
+      "Section": "Hometheaters",
+      "EID": "EMP020",
+      "id": 20
+    },
+    {
+      "Name": "varatharaj",
+      "Phone": 9360733323,
+      "Section": "mobile",
+      "Salary": 20000,
+      "EID": "EMP021",
+      "id": 21
+    },
+    {
+      "Name": "Harish",
+      "Phone": 9360733323,
+      "Section": "laptop",
+      "Salary": 20000,
+      "EID": "EMP022",
+      "id": 22
+    },
+    {
+      "Name": "hari",
+      "Phone": 3333333333,
+      "Section": "laptop",
+      "Salary": 20000,
+      "EID": "EMP023",
+      "id": 23
+    }
+  ]
+}

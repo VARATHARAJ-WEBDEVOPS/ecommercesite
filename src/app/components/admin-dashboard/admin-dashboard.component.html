@@ -1,0 +1,31 @@
+<div class="layout">
+    <h1></h1>
+    <div class="nav">
+        <h1>Quick Kart</h1>
+        <ul>
+            <li ><i class="bi bi-grid-1x2-fill"></i> Layout</li>
+            <li><i class="bi bi-truck" style="font-size: 22px;" ></i> Orders</li>
+            <li><i class="bi bi-inboxes-fill"></i>Products</li>
+            <li routerLink="/employee"><i class="bi bi-person-fill-gear" style="font-size: 19px;"></i>Employees</li>
+        </ul>
+        <button (click)="logout()">LOGOUT</button>
+    </div>
+    <div class="content">
+        <h1>Layout</h1>
+        <div class="layout-content">
+            <div class="left">
+                <h3>Offer Banner</h3>
+                <div class="img" [style.background-image]="'url(' + banners?.banner1 + ')'"  ></div>
+                <div class="img" [style.background-image]="'url(' + banners?.banner2 + ')'"  ></div>
+                <div class="img" [style.background-image]="'url(' + banners?.banner3 + ')'"  ></div>
+            </div>
+            <div class="right">
+                <h3>Edit Offer Banner</h3>
+                <input type="text" placeholder="Banner 1 URL: https://example.jpg" [(ngModel)]="updatedBanners.banner1">
+                <input type="text" placeholder="Banner 2 URL: https://example.jpg" [(ngModel)]="updatedBanners.banner2">
+                <input type="text" placeholder="Banner 3 URL: https://example.jpg" [(ngModel)]="updatedBanners.banner3">
+                <button id="change" (click)="updateBanners()">CHANGE</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="login">
+    <h1 id="loginTopic">Quick Kart</h1>
+    <div class="left">
+
+    </div>
+    <div class="right">
+        <h1>Login Account</h1>
+        <form (ngSubmit)="onSubmit()">
+            <input type="email" name="email" [(ngModel)]="email"  placeholder="Email Id" id="input">
+            <input type="password"  name="password" [(ngModel)]="password" placeholder="Passward" id="input">
+            <p id="error">{{showError}}</p>
+            <div class="spesific">
+                <div id="spesific_left">
+                    <input type="checkbox" name="" id="check">
+                    <p>Keep me signed in</p>
+                </div>             
+                <p (click)="moveToSignup()">New member?</p>
+            </div>
+            <button type="submit">LOGIN</button>
+        </form>
+    </div>
+</div>

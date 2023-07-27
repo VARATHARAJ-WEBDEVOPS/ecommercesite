@@ -1,0 +1,75 @@
+<div class="docs">
+    <div class="nav" [ngClass]="{'scrolled': isScrolled}">
+        <ul>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#contact">Contact Us</a>
+            </li>
+            <li>
+                <a href="#about">About Us</a>
+            </li>
+        </ul>
+    </div>
+    <section class="home" id="home">
+        <div class="container">
+            <h1>Quick kart</h1>
+            <p>A huge mart at your's Home</p>
+            <button routerLink="/login">Shop Now!</button>
+        </div>
+    </section>
+    <section class="contactUs" id="contact">
+        <h1>Contact Us</h1>
+        <div class="left">
+            <div class="items">
+                <i class="bi bi-geo-alt-fill"></i>
+                <h4>Address</h4>
+                <p>3/144 Tirumangalam</p>
+                <p>Madurai-625706</p>
+            </div>
+            <div class="items">
+                <i class="bi bi-telephone-fill"></i>
+                <h4>Phone</h4>
+                <p>936-073-3323</p>
+                <p>737-337-0386</p>
+            </div>
+            <div class="items" style="margin-bottom: 10%;">
+                <i class="bi bi-envelope-at-fill"></i>
+                <h4>Email</h4>
+                <p>tgreenscreenlyrics@gmail.com</p>
+                <p>varathan2512002@gmail.com</p>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Send us a message</h2>
+            <p>If you may have any other needs or quries related to our application, you can send me message from here.
+                It's my pleasure to help you</p>
+            <input type="text" required name="" id="" placeholder="Enter your Name">
+            <input type="email" required name="" id="" placeholder="Enter your Email">
+            <textarea id="myTextArea" rows="5" cols="40" required name="" id=""
+                placeholder="Enter your Message..."></textarea>
+            <button>SEND</button>
+        </div>
+    </section>
+    <section class="aboutUs" id="about">
+        <div class="container">
+            <h1>About us</h1>
+            <div class="left">
+                <h1>Quick kart</h1>
+                <p>A huge mart at your's Home</p>
+            </div>
+            <div class="right">
+                <P>Angular and IBM Couch DB to build this E-Commerce Application. This is an Experimental Site It is not
+                    yet available
+                    for use. Aim to maintaing critical data flows and properly assembling data on front-end components,
+                    Designed by varatharaj
+                </P>
+            </div>
+            <div class="bottom">
+                <p>Apache License
+                    Version 2.0, January 2004</p>
+            </div>
+        </div>
+    </section>
+</div>

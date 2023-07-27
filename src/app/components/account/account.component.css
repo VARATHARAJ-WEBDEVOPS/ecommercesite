@@ -1,0 +1,116 @@
+.account {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1D693;
+    position: relative;
+}
+
+.profileRound {
+    width: 25vh;
+    height: 25vh;
+    background-color: aliceblue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -13vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.account .bottom {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15vh;
+}
+
+h1, p {
+    padding: 2vh;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 2vh;
+    width: 100%;
+    justify-content: center;
+}
+
+.buttons .orders {
+    border: 2px solid #c95e29;
+    height: 7vh;
+    width: 25vh;
+    margin: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1vh;
+}
+
+.buttons .orders:hover {
+    background-color: #c95e29;
+    color: white;
+}
+
+.buttons .wishlist:hover {
+    background-color: #c95e29;
+    color: white;
+}
+
+.buttons .wishlist {
+    border: 2px solid #c95e29;
+    justify-content: center;
+    display: flex;
+    height: 7vh;
+    width: 25vh;
+    margin: 2vh;
+    align-items: center;
+    border-radius: 1vh;
+}
+
+button {
+    background-color: #c95e29;
+    color: #fff;
+    padding: 2vh;
+    border: none;
+    border-radius: 0.6vh;
+    margin-top: 10vh;
+}
+
+#user {
+    font-size: 20vh;
+}
+
+#topic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topic i {
+    font-size: 5vh;
+    padding-left:3vh;
+    color: beige;
+}
+
+#topic i {
+    color: #c95e29;
+}

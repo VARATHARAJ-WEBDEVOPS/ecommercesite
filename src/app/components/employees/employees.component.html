@@ -1,0 +1,100 @@
+<div class="layout">
+    <h1></h1>
+    <div class="nav">
+        <h1>Quick Kart</h1>
+        <ul>
+            <li routerLink="/admindashboard"><i class="bi bi-grid-1x2-fill"></i> Layout</li>
+            <li><i class="bi bi-truck" style="font-size: 22px;"></i> Orders</li>
+            <li><i class="bi bi-inboxes-fill"></i>Products</li>
+            <li routerLink="/employee"><i class="bi bi-person-fill-gear" style="font-size: 19px;"></i>Employees</li>
+        </ul>
+        <button (click)="logout()">LOGOUT</button>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="left">
+                <h1>New Employee</h1>
+                <form (ngSubmit)="onSubmit()" [formGroup]="createEmployeeForm">
+                    <input type="text" placeholder="Employee Name" [(ngModel)]="Name" formControlName="Name"
+                        style="width: 70%;">
+                    <div class="">
+                        <input type="number" placeholder="Phnone" [(ngModel)]="Phone" formControlName="Phone">
+                        <input type="number" placeholder="salary" [(ngModel)]="Salary" formControlName="Salary">
+                    </div>
+                    <div class="">
+                        <input type="text" placeholder="Section" [(ngModel)]="Section" formControlName="Section">
+                        <input type="text" [placeholder]="lastEID" [value]="lastEID" [(ngModel)]="EID"
+                            formControlName="EID" readonly>
+                    </div>
+                    <div>
+                        <button style="background-color: rgb(255, 38, 0);">Reset</button>
+                        <button type="submit">Save</button>
+                    </div>
+                </form>
+                <P style="color: red;">{{showError}}</P>
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="searchTerm" (keyup)="searchEmployees()" placeholder="Search Employees">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>E-ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody style="margin-top: 15px;" *ngFor="let employee of EmployeeList">
+                            <td>{{employee.EID}}</td>
+                            <td>{{employee.Name}}</td>
+                            <td>{{employee.Phone}}</td>
+                            <td><button style="font-size: 4vh; background: none ; border: none; color: #1442e9;"
+                                    (click)="toggleDialog(employee);  editAction(employee);">
+                                    <i class="bi bi-credit-card-2-front"></i>
+                                </button>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="diolog" *ngIf="showDialog">
+            <div class="name">
+                <h1  *ngIf="!showTextBox">{{selectedUser.Name}}</h1>
+                <input type="text" *ngIf="showTextBox" formControlName="Name">
+            </div>
+            <div class="details">
+                <div class="rightdiolog">
+                    <h5>Departmet &nbsp;:</h5>
+                    <h5>E-ID &nbsp;:</h5>
+                    <h5>Phone No &nbsp;:</h5>
+                    <h5>Salary &nbsp;:</h5>
+                    <h5>Gender &nbsp;:</h5>
+                </div>
+                <div class="leftleftdiolog">
+                    <form (ngSubmit)="onSubmit()" [formGroup]="createEmployeeForm">
+                        <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Section}}</h5>
+                        <input type="text" *ngIf="showTextBox" formControlName="Section">
+                        <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.EID}}</h5>
+                        <input type="text" *ngIf="showTextBox" formControlName="EID">
+                        <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Phone}}</h5>
+                        <input type="text" *ngIf="showTextBox" formControlName="Phone">
+                        <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Salary}}</h5>
+                        <input type="text" *ngIf="showTextBox" formControlName="Salary">
+                        <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Gender}}</h5>
+                        <input type="text" *ngIf="showTextBox" formControlName="Gender">
+                    </form>
+                </div>
+            </div>
+            <div class="actions">
+
+
+
+                <button id="negative">Delete</button>
+                <button id="positive" (click)="  onEdit(); editAction(employee);">Edit</button>
+                <button id="positive">Save</button>
+                <button id="negative" (click)="toggleDialog(employee)">Cancel</button>
+            </div>
+        </div>
+    </div>
