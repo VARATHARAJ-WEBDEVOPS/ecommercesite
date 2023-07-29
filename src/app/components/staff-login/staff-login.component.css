@@ -1,0 +1,115 @@
+.adminlogin {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dfdbdb;
+}
+
+.content {
+    width: 60vh;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+    border-radius: 2vh;
+}
+
+.profileIcon {
+    position: absolute;
+    top: -8vh;
+    width: 15vh;
+    height: 15vh;
+    background-color: #0D4979;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.adminlogin h1 {
+    font-size: 3.5vh;
+    font-weight: 400;
+    color: #7a7979;
+    margin-bottom: 2.5vh;
+    margin-top: 3vh;
+}
+
+.adminlogin input{
+    width: 70%;
+    height: 3vh;
+    margin: 1vh;
+    background-color: #dfdbdb;
+    border: none;
+    padding: 2vh;
+    border-radius: .5vh;
+
+}
+
+.adminlogin button {
+    width: 77%;
+    padding: 2vh;
+    border: none;
+    background-color: #0D4979;
+    color: #fff;
+    margin-top: 3vh;
+    margin-bottom: 2.5vh;
+    border-radius: .5vh;
+}
+.adminlogin button:hover {
+    background-color: #1869ac;
+}
+
+.adminlogin p {
+    color:#7a7979 ;
+}
+
+.adminlogin p span {
+    color: #0D4979;
+    cursor: pointer;
+}
+
+#user_icon {
+    font-size: 7vh;
+    color:white;
+}
+
+#adminLogo {
+    position: fixed;
+    top: 0;
+    left: 3vh;
+    font-size: 5vh;
+    color: #0D4979;
+    font-weight: bold;
+}
+
+#adminBackButton {
+    border-radius: 1vh;
+    position: fixed;
+    bottom: 0;
+    left: 5vh;
+    width: 15vh;
+    text-align: center;
+    height: 6vh;
+}
+
+#validationMessage {
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+i{
+    color: white;
+}

@@ -16,7 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AccountComponent } from './components/account/account.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { StaffsComponent } from './components/staffs/staffs.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { StaffLoginComponent } from './components/staff-login/staff-login.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
+import { ProductComponent } from './components/product/product.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,11 @@ import { StaffsComponent } from './components/staffs/staffs.component';
     AdminLoginComponent,
     AccountComponent,
     EmployeesComponent,
-    StaffsComponent
+    LayoutComponent,
+    StaffLoginComponent,
+    StaffDashboardComponent,
+    ProductComponent,
+    DeliveryComponent
   ],
   imports: [
     BrowserModule,

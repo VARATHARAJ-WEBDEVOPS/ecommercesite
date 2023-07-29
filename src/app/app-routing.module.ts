@@ -8,7 +8,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AccountComponent } from './components/account/account.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { StaffsComponent } from './components/staffs/staffs.component';
+import { StaffLoginComponent } from './components/staff-login/staff-login.component';
+import { ProductComponent } from './components/product/product.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
   {path:'', component:DocsComponent},
@@ -19,7 +23,11 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'account', component:AccountComponent},
   {path:'employee', component:EmployeesComponent},
-  {path:'staff', component:StaffsComponent}
+  {path:'staffdashboard', component:StaffDashboardComponent},
+  {path:'stafflogin', component:StaffLoginComponent},
+  {path:'product', component:ProductComponent},
+  {path:'delivery', component:DeliveryComponent},
+  {path:'layout', component:LayoutComponent}
 ];
 
 @NgModule({

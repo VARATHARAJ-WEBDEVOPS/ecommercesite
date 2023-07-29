@@ -40,7 +40,7 @@
   "employee": [
     {
       "Name": "Arthi",
-      "Phone": "9876543210",
+      "Phone": "9876543211",
       "Section": "Laptop",
       "Salary": "55500",
       "EID": "EMP002",
@@ -112,7 +112,7 @@
     },
     {
       "Name": "Isabella Lee",
-      "Phone": "+1 111-222-3333",
+      "Phone": "1112223333",
       "Section": "Laptop",
       "Salary": 58000,
       "EID": "EMP010",
@@ -121,10 +121,11 @@
     },
     {
       "Name": "David Hernandez",
-      "Phone": "+1 987-654-3211",
-      "Salary": 73000,
+      "Phone": "9876543211",
       "Section": "Headphones",
+      "Salary": 73000,
       "EID": "EMP011",
+      "Gender": "",
       "id": 11
     },
     {
@@ -138,23 +139,25 @@
     },
     {
       "Name": "William Lewis",
-      "Phone": "+1 777-666-5555",
-      "Salary": 64000,
+      "Phone": "7776665555",
       "Section": "Mobile",
+      "Salary": 64000,
       "EID": "EMP013",
+      "Gender": "",
       "id": 13
     },
     {
       "Name": "Mia Scott",
-      "Phone": "+1 222-333-4444",
-      "Salary": 59000,
+      "Phone": "2223334444",
       "Section": "Laptop",
+      "Salary": 59000,
       "EID": "EMP014",
+      "Gender": "",
       "id": 14
     },
     {
       "Name": "Andrew Turner",
-      "Phone": "+3334445555",
+      "Phone": "3334445555",
       "Section": "Headphones",
       "Salary": 75000,
       "EID": "EMP015",
@@ -163,15 +166,16 @@
     },
     {
       "Name": "Sofia Phillips",
-      "Phone": "+1 567-888-9999",
-      "Salary": 51000,
+      "Phone": "5678889999",
       "Section": "Hometheaters",
+      "Salary": 51000,
       "EID": "EMP016",
+      "Gender": "",
       "id": 16
     },
     {
       "Name": "Joseph Allen",
-      "Phone": "+7776665555",
+      "Phone": "7776665555",
       "Section": "Mobile",
       "Salary": 68000,
       "EID": "EMP017",
@@ -180,15 +184,16 @@
     },
     {
       "Name": "Grace Young",
-      "Phone": "+1 222-333-4444",
-      "Salary": 60000,
+      "Phone": "2223334444",
       "Section": "Laptop",
+      "Salary": 60000,
       "EID": "EMP018",
+      "Gender": "",
       "id": 18
     },
     {
       "Name": "Christopher Hall",
-      "Phone": "+1 333-444-5555",
+      "Phone": "3334445555",
       "Section": "Headphones",
       "Salary": 77000,
       "EID": "EMP019",
@@ -197,7 +202,7 @@
     },
     {
       "Name": "Chloe Green",
-      "Phone": "+1 567-888-9999",
+      "Phone": "5678889999",
       "Section": "Hometheaters",
       "Salary": 52000,
       "EID": "EMP020",
@@ -205,13 +210,141 @@
       "id": 20
     },
     {
-      "Name": "varatharaj",
-      "Phone": 9360733323,
-      "Section": "mobile",
-      "Salary": 20000,
+      "Name": "dasdad",
+      "Phone": 4444444444,
+      "Section": "Mobile",
+      "Salary": 433,
       "EID": "EMP021",
-      "Gender": "male",
+      "Gender": "",
       "id": 21
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "Name": "Poco M4 Pro",
+      "PID": "PHN001",
+      "imgUrl": "",
+      "Price": "16000",
+      "OriginalPrice": "20000",
+      "Offer": "30",
+      "Stock": "30",
+      "catogory": "Mobile",
+      "review": [
+        {
+          "user": "",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "Name": "REALME",
+      "PID": "PHN002",
+      "imgUrl": "",
+      "Price": "12000",
+      "OriginalPrice": "26000",
+      "Offer": "26",
+      "Stock": "90",
+      "catogory": "Mobile",
+      "review": [
+        {
+          "user": "",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "Name": "SONY 5.1",
+      "PID": "HMT001",
+      "imgUrl": "",
+      "Price": "20000",
+      "OriginalPrice": "26000",
+      "Offer": "15",
+      "Stock": "23",
+      "catogory": "Hometheaters",
+      "review": [
+        {
+          "id": 1,
+          "user": "",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "Name": "LENOVO FLIP",
+      "PID": "LAP001",
+      "imgUrl": "",
+      "Price": "120000",
+      "OriginalPrice": "136000",
+      "Offer": "15",
+      "Stock": "23",
+      "catogory": "Laptop",
+      "review": [
+        {
+          "id": 1,
+          "user": "",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "Name": "JBL 240",
+      "PID": "HPN001",
+      "imgUrl": "",
+      "Price": "750",
+      "OriginalPrice": "1000",
+      "Offer": "8",
+      "Stock": "23",
+      "catogory": "Headphones",
+      "review": [
+        {
+          "id": 1,
+          "user": "",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "Name": "eee",
+      "PID": "HMT002",
+      "imgUrl": "eee",
+      "Price": 333,
+      "OriginalPrice": 333,
+      "Offer": 333,
+      "Stock": 333,
+      "catogory": "Hometheaters",
+      "review": {
+        "user": [
+          ""
+        ],
+        "message": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "Name": "OPPO",
+      "PID": "PHN003",
+      "imgUrl": "dadad",
+      "Price": 333,
+      "OriginalPrice": 333,
+      "Offer": 666,
+      "Stock": 333,
+      "catogory": "Mobile",
+      "review": {
+        "user": [
+          ""
+        ],
+        "message": [
+          ""
+        ]
+      }
     }
   ]
 }

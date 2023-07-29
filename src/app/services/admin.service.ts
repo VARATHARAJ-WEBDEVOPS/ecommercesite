@@ -43,4 +43,9 @@ export class AdminService {
     return this.http.put(`${this.EmployeeUrl}/${id}`, data)
   }
 
+  getEmployeeByEmail(Phone: any): Observable<employee[]> {
+    const url = `${this.EmployeeUrl}?Phone=${Phone}`;
+    return this.http.get<employee[]>(url);
+  }
+
 }

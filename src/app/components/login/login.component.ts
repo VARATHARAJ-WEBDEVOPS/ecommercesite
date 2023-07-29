@@ -60,7 +60,9 @@ export class LoginComponent implements OnInit {
       this.showError = "Please enter your Email";
     } else if (this.email === "admin" && this.password === "admin") {
       this.router.navigateByUrl('/adminlogin');
-    } else if (this.email && this.password) {
+    } else if (this.email === "staff" && this.password === "staff") {
+      this.router.navigateByUrl('/stafflogin');
+    }else if (this.email && this.password) {
       this.performLogin();
     } else {
       this.showError = "Invalid User!";

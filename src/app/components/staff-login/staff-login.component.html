@@ -1,0 +1,20 @@
+<div class="adminlogin">
+    <h1 id="adminLogo">Quick Kart</h1>
+    <div class="content">
+        <div class="profileIcon">
+           <span style="font-size: 7vh"><i class="bi bi-person-fill"></i></span> 
+        </div>
+        <h1>Staff Log in</h1>
+        <form (ngSubmit)="onSubmit()">
+            <input type="text" id="adminId" placeholder="Phone No" name="Phone" [(ngModel)]="Phone">
+            <input type="text" id="password" placeholder="Staff ID" name="EId" [(ngModel)]="EID">
+            <p id="validationMessage">{{showError}}</p>
+
+            <button type="submit">LOGIN</button>
+        </form>
+        <p>Forgot <span>Password?</span></p>
+
+    </div>
+        <button id="adminBackButton" routerLink="/"> <i class="bi bi-house-door-fill"></i>
+        &nbsp; Home</button>
+</div>
