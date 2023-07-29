@@ -135,11 +135,10 @@ export class StaffDashboardComponent implements OnInit {
   Create() {
     this.createProductForm.value.PID = this.lastPID;
     this.createProductForm.value.catogory = this.category;
-    this.productService.postProductData(this.createProductForm.value,)
-      .subscribe(resp => {
+    this.productService.postProductData(this.createProductForm.value).subscribe(resp => {
         console.log(resp);
         this.resetFormFields();
-        this.ngOnInit();
+        this.getProduct();
       })
   }
 
@@ -151,15 +150,17 @@ export class StaffDashboardComponent implements OnInit {
     this.productService.deleteProductData(id).subscribe(
       result => {
         console.log(result);
+        this.getProduct();
       }
     );
   }
 
   updateData() {
-    this.productService.updateProductData(String(this.createProductForm.value.id), this.createProductForm.value).subscribe(result =>
-      console.log(result)
-    );
-    this.ngOnInit();
+    this.productService.updateProductData(String(this.createProductForm.value.id), this.createProductForm.value).subscribe(result => {
+      console.log(result);
+      this.resetFormFields();
+      this.getProduct();
+    });
   }
 
   editAction(product: any) {

@@ -224,28 +224,11 @@
       "id": 1,
       "Name": "Poco M4 Pro",
       "PID": "PHN001",
-      "imgUrl": "",
+      "imgUrl": "zzzz",
       "Price": "16000",
       "OriginalPrice": "20000",
-      "Offer": "30",
-      "Stock": "30",
-      "catogory": "Mobile",
-      "review": [
-        {
-          "user": "",
-          "message": ""
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "Name": "REALME",
-      "PID": "PHN002",
-      "imgUrl": "",
-      "Price": "12000",
-      "OriginalPrice": "26000",
-      "Offer": "26",
-      "Stock": "90",
+      "Offer": 22,
+      "Stock": 44,
       "catogory": "Mobile",
       "review": [
         {
@@ -297,7 +280,7 @@
       "imgUrl": "",
       "Price": "750",
       "OriginalPrice": "1000",
-      "Offer": "8",
+      "Offer": 44,
       "Stock": "23",
       "catogory": "Headphones",
       "review": [
@@ -329,21 +312,18 @@
     },
     {
       "id": 7,
-      "Name": "OPPO",
-      "PID": "PHN003",
-      "imgUrl": "dadad",
-      "Price": 333,
-      "OriginalPrice": 333,
-      "Offer": 666,
-      "Stock": 333,
+      "Name": "xcdfdf",
+      "PID": "PHN002",
+      "imgUrl": "sdfsdf",
+      "Price": 11,
+      "OriginalPrice": 11,
+      "Offer": 55,
+      "Stock": 22,
       "catogory": "Mobile",
       "review": {
-        "user": [
-          ""
-        ],
-        "message": [
-          ""
-        ]
+        "id": "",
+        "user": "",
+        "message": ""
       }
     }
   ]

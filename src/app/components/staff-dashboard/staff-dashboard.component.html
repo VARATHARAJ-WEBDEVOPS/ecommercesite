@@ -4,9 +4,9 @@
             Hey! {{employee.Gender === 'male' ? 'Mr.' : 'Mrs.'}}{{employee.Name}}
         </h2>
         <h2></h2>
-        <div style="display: flex;  width: 40%; ">
+        <div style="display: flex;  width: 40%;">
             <h2>{{employee.Section}}'s Branch</h2>
-            <button (click)="logout()">LOGOUT</button>
+            <button (click)="logout()" style="border: none; background-color: red; color: white; border-radius: 1vh; padding-block: 1vh;">LOGOUT <i class="bi bi-power"></i></button>
         </div>
     </div>
     <div class="content">
@@ -21,9 +21,10 @@
                 <input type="number" placeholder="stock" name="Stock" [(ngModel)]="Stock" formControlName="Stock">
                 <p style="color: red;padding-bottom: 3vh;">{{showError}}</p>
                 <div style="display: flex; width: 100%; justify-content: center;">
+                <button (click)="resetFormFields()" *ngIf="!showEditButton" style="margin-right: 2vh; background-color: red;">Reset</button>
                 <button type="submit" *ngIf="!showEditButton">Save</button>
-                <button type="submit" (click)="updateData()" *ngIf="showEditButton" style="margin-right: 2vh;">Update</button>
-                <button type="submit" *ngIf="showEditButton">Cancel</button>
+                <button  (click)="updateData(); this.showEditButton = false; this.resetFormFields()" *ngIf="showEditButton" style="margin-right: 2vh;">Update</button>
+                <button (click)="this.showEditButton = false; resetFormFields()" *ngIf="showEditButton" style="background-color: red;">Cancel</button>
             </div>
             </form>
         </div>
@@ -49,7 +50,7 @@
                         <td>{{product.OriginalPrice}}</td>
                         <td>{{product.Offer}}</td>
                         <td>{{product.Stock}}</td>
-                        <td><button  (click)="deleteList(product.id)" style="font-size: 4vh; background: none ; border: none; color: #1442e9;">
+                        <td><button  (click)="deleteList(product.id)" style="font-size: 4vh; color: red; border: none; background: none; ">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
                             <button (click)="editAction(product)" style="font-size: 4vh; background: none ; border: none; color: #1442e9;">
