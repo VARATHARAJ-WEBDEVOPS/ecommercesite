@@ -12,6 +12,9 @@ export class ProductService {
 
   private ProductUrl = 'http://localhost:3000/products';   //employee
 
+  getProducts(): Observable<product[]> {
+    return this.http.get<any[]>(this.ProductUrl);
+  }
 
   getProductByCatogory(catogory: any): Observable<product[]> {
     const url = `${this.ProductUrl}?catogory=${catogory}`;

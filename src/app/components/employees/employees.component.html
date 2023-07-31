@@ -5,7 +5,7 @@
         <ul>
             <li routerLink="/admindashboard"><i class="bi bi-bar-chart-line-fill"></i> Dashboard</li>
             <li routerLink="/layout"><i class="bi bi-grid-1x2-fill"></i> Layout</li>
-            <li routerLink="/delivery"><i class="bi bi-truck" style="font-size: 22px;" ></i> Orders</li>
+            <li routerLink="/delivery"><i class="bi bi-truck" style="font-size: 22px;"></i> Orders</li>
             <li routerLink="/product"><i class="bi bi-inboxes-fill"></i>Products</li>
             <li routerLink="/employee"><i class="bi bi-person-fill-gear" style="font-size: 19px;"></i>Employees</li>
         </ul>
@@ -23,9 +23,24 @@
                         <input type="number" placeholder="salary" [(ngModel)]="Salary" formControlName="Salary">
                     </div>
                     <div class="">
-                        <input type="text" placeholder="Section" [(ngModel)]="Section" formControlName="Section">
-                        <input type="text" [placeholder]="lastEID" [(ngModel)]="EID" [value]="lastEID"
-                            formControlName="EID" readonly>
+                        <div>
+                            <select [(ngModel)]="Section" formControlName="Section">
+                                <option value="">Select Branch ▼</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="Hometheaters">Hometheaters</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Headphones">Headphones</option>
+                            </select>
+
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male" [(ngModel)]="Gender"
+                                    formControlName="Gender"> Male
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female" [(ngModel)]="Gender"
+                                    formControlName="Gender"> Female
+                            </label>
+                        </div>
                     </div>
                     <div>
                         <button style="background-color: rgb(255, 38, 0);" (click)="resetFormFields()">Reset</button>
@@ -78,9 +93,9 @@
                     </div>
                     <div class="leftleftdiolog">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Section}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="Section" class="blinking-cursor">
+                        <input type="text" *ngIf="showTextBox" formControlName="Section" class="blinking-cursor" readonly>
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.EID}}</h5>
-                        <input type="text" *ngIf="showTextBox" formControlName="EID" class="blinking-cursor">
+                        <input type="text" *ngIf="showTextBox" formControlName="EID" class="blinking-cursor" readonly>
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Phone}}</h5>
                         <input type="text" *ngIf="showTextBox" formControlName="Phone" class="blinking-cursor">
                         <h5 *ngIf="!showTextBox"> &nbsp; {{selectedUser.Salary}}</h5>

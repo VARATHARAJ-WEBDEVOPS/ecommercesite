@@ -51,9 +51,9 @@ export class EmployeesComponent implements OnInit {
 
   toggleDialog(employee: any) {
     this.selectedUser = employee;
-    if(this.selectedUser.Gender === "male") {
+    if (this.selectedUser.Gender === "male") {
       this.Gender = "Mr.";
-    } else if (this.selectedUser.Gender === "female"){
+    } else if (this.selectedUser.Gender === "female") {
       this.Gender = "Mrs.";
     }
     this.showDialog = !this.showDialog;
@@ -97,7 +97,8 @@ export class EmployeesComponent implements OnInit {
         console.log(resp);
         this.resetFormFields();
         this.ngOnInit();
-      })
+      });
+    alert('saved Successfully');
   }
 
   resetFormFields() {
@@ -109,16 +110,15 @@ export class EmployeesComponent implements OnInit {
       this.EmployeeList = resp;
       console.log(resp);
       this.getLastEID();
-    })
+    });
   }
 
   deleteList(id: number) {
     this.adminService.deleteEmployeeData(id).subscribe(
       result => {
         console.log(result);
-      }
-    );
-    this.getAll();
+        this.getAll();
+      });
     this.showDialog = !this.showDialog;
   }
 
@@ -134,7 +134,7 @@ export class EmployeesComponent implements OnInit {
   editAction(employee: any) {
     this.updateEmployeeForm.patchValue(employee);
   }
-  
+
   onEdit() {
     this.showTextBox = !this.showTextBox;
   }

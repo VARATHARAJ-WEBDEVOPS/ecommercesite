@@ -106,11 +106,16 @@
 }
 
 .content .container .left input,
-#search {
+#search, select {
   padding: 2.5vh;
   border: none;
   background-color: #d9e0f8;
   border-radius: 1vh;
+}
+
+select {
+  appearance: none;
+  outline: none;
 }
 
 .content .container .left button {
@@ -331,4 +336,8 @@ h5 {
 #search {
   width: 80%;
   margin: 5vh;
+}
+
+.radio-label {
+  user-select: none;
 }

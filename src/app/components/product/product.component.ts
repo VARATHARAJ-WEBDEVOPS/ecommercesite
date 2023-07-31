@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/services/admin.service';
-
+import { ProductService } from 'src/app/services/product.service';
+import { product } from '../staff-dashboard/staff-dashboard.component';
 
 @Component({
   selector: 'app-product',
@@ -10,41 +10,59 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(public router: Router, public adminService: AdminService) { }
+  productList: any[] = [];
+  categories: string[] = [];
+  selectedCategory: string = 'all';
+  filteredProducts: any[] = [];
+  searchTerm: string = '';
 
-  banners: any;
-  updatedBanners: any = {};
+  constructor(private productService: ProductService, public router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
-      // The ID of the entry you want to fetch
     }
-      try {
-        this.adminService.getBanners().subscribe(
-          (data) => {
-            this.banners = data;
-            this.updatedBanners = { ...data }; // Make a copy for editing
-        console.log(this.banners);
-          });
-      } catch (error) {
-        console.log(error)
-      }      
+    this.getAll();
+    this.categorizeProducts();
+    this.filterProductsByCategory();
   }
+
+  private categorizeProducts() {
+    this.categories = Array.from(new Set(this.productList.map((p) => p.catogory)));
+
+  }
+
+  getAll() {
+    this.productService.getProducts().subscribe((products) => {
+      this.productList = products;
+      this.categorizeProducts();
+      this.filterProductsByCategory();
+    });
+  }
+  
+
+  filterProductsByCategory() {
+    this.filteredProducts =
+      this.selectedCategory === 'all'
+        ? this.productList
+        : this.productList.filter((product) => product.category === this.selectedCategory);
+  }
+  
+  searchProducts() {
+    if (this.searchTerm.trim() === '') {
+      this.getAll();
+    } else {
+        this.filteredProducts = this.filteredProducts.filter(product =>
+          Object.values(product).some(value =>
+            String(value).toLowerCase().includes(this.searchTerm.toLowerCase()))
+        );
+    }
+  }  
 
   logout() {
     localStorage.removeItem('admin');
     this.router.navigateByUrl('');
   }
 
-  updateBanners(): void {
-    const id = 1; // The ID of the entry you want to update
-    this.adminService.updateBanners(id, this.updatedBanners).subscribe(
-      () => {
-        console.log('Banners updated successfully!');
-        // If you want to refresh the displayed banners, you can call ngOnInit() again.
-        this.ngOnInit();
-      }
-    );
-  }
+
 }

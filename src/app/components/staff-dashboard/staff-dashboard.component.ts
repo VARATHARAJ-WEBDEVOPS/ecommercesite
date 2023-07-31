@@ -53,6 +53,7 @@ export class StaffDashboardComponent implements OnInit {
   Offer: string = "";
   Stock: string = "";
   catogory: string = "";
+  lastChanges: any;
 
   staffPhoneNo!: string | null;
   category!: string;
@@ -72,7 +73,6 @@ export class StaffDashboardComponent implements OnInit {
 
   constructor(public router: Router,
     public adminService: AdminService,
-    private http: HttpClient,
     private formBuilder: FormBuilder,
     public productService: ProductService) { }
 
@@ -93,6 +93,7 @@ export class StaffDashboardComponent implements OnInit {
       Offer: [""],
       Stock: [""],
       catogory: [""],
+      lastChanges: [""],
       review: [
         {
           id: '',
@@ -113,7 +114,9 @@ export class StaffDashboardComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.EmployeeList = data;
-        this.category = data[0].Section
+        this.category = data[0].Section;
+        this.lastChanges = data[0].EID;
+        console.log(data[0].EID);
         this.getProduct();
       });
 
@@ -133,13 +136,14 @@ export class StaffDashboardComponent implements OnInit {
   }
 
   Create() {
+    this.createProductForm.value.lastChanges = this.lastChanges;
     this.createProductForm.value.PID = this.lastPID;
     this.createProductForm.value.catogory = this.category;
     this.productService.postProductData(this.createProductForm.value).subscribe(resp => {
-        console.log(resp);
-        this.resetFormFields();
-        this.getProduct();
-      })
+      console.log(resp);
+      this.resetFormFields();
+      this.getProduct();
+    });
   }
 
   resetFormFields() {
@@ -156,6 +160,7 @@ export class StaffDashboardComponent implements OnInit {
   }
 
   updateData() {
+    this.createProductForm.value.lastChanges = this.lastChanges;
     this.productService.updateProductData(String(this.createProductForm.value.id), this.createProductForm.value).subscribe(result => {
       console.log(result);
       this.resetFormFields();
