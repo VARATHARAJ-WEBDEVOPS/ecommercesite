@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
-import { product } from '../staff-dashboard/staff-dashboard.component';
 
 @Component({
   selector: 'app-product',
@@ -42,11 +41,9 @@ export class ProductComponent implements OnInit {
   
 
   filterProductsByCategory() {
-    this.filteredProducts =
-      this.selectedCategory === 'all'
-        ? this.productList
-        : this.productList.filter((product) => product.category === this.selectedCategory);
+   this.filteredProducts = this.selectedCategory === 'all' ? this.productList : this.productList.filter((product) => product.catogory === this.selectedCategory);
   }
+
   
   searchProducts() {
     if (this.searchTerm.trim() === '') {

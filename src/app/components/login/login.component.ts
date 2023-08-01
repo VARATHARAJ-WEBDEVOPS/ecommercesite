@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-
   showError: string = '';
 
   moveToSignup() {
@@ -58,11 +57,7 @@ export class LoginComponent implements OnInit {
       this.showError = "Please enter your Password";
     } else if (this.email === "") {
       this.showError = "Please enter your Email";
-    } else if (this.email === "admin" && this.password === "admin") {
-      this.router.navigateByUrl('/adminlogin');
-    } else if (this.email === "staff" && this.password === "staff") {
-      this.router.navigateByUrl('/stafflogin');
-    }else if (this.email && this.password) {
+    } else if (this.email && this.password) {
       this.performLogin();
     } else {
       this.showError = "Invalid User!";

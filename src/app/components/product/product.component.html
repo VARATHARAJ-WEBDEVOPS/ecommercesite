@@ -14,7 +14,7 @@
     <div class="content">
         <div class="search">
             <div class="filter-dropdown" style="display: flex;">
-                <select id="categorySelect" [(ngModel)]="selectedCategory" (change)="filterProductsByCategory()">
+                <select id="categorySelect" [(ngModel)]="selectedCategory" name="selectedCategory" (change)="filterProductsByCategory()">
                     <option value="all">All Categories ▼</option>
                     <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
                 </select>
@@ -25,7 +25,7 @@
         <div class="products-container">
             <div class="card" *ngFor="let product of filteredProducts">
                 <div class="image">
-                   <img src="{{product.imgUrl}}" alt="product-img">
+                   <img style="height: 95%; width: 95%;" src="{{product.imgUrl}}" alt="product-img">
                 </div>
                 <div style="display: flex; flex-direction: column; padding:2vh">
                     <ul style="list-style: none;">

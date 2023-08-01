@@ -26,7 +26,8 @@
     background-color: rgb(247, 251, 255);
 }
 
-.nav button, #change {
+.nav button,
+#change {
     padding-inline: 2vh;
     padding-block: 2vh;
     background-color: #1442e9;
@@ -35,7 +36,8 @@
     border-radius: 1vh;
 }
 
-.nav button:hover, #change:hover  {
+.nav button:hover,
+#change:hover {
     background-color: #102a85;
 }
 
@@ -60,9 +62,11 @@
     justify-content: center;
 }
 
-.nav ul li:hover, .nav ul li:nth-child(2){
+.nav ul li:hover,
+.nav ul li:nth-child(2) {
     background-color: #1442e9;
 }
+
 .nav ul li i {
     padding-inline: 1vh;
 }
@@ -93,12 +97,13 @@
     align-items: center;
 }
 
-.layout-content .left h3, .right h3 {
+.layout-content .left h3,
+.right h3 {
     font-weight: 100;
     margin-bottom: 1vh
 }
 
-.layout-content .left .img{  
+.layout-content .left .img {
     min-width: 45vh;
     min-height: 15vh;
     margin: 2vh;
@@ -108,15 +113,15 @@
     background-size: cover;
 }
 
-.layout-content .right input{
+.layout-content .right input {
     margin: 1vh;
     padding: 1vh;
     padding-left: 2vh;
-width: 70%;
-height: 4vh;
-border: none;
-background-color: rgb(194, 194, 248);
-border-radius: 1vh;
+    width: 70%;
+    height: 4vh;
+    border: none;
+    background-color: rgb(194, 194, 248);
+    border-radius: 1vh;
 }
 
 #change {

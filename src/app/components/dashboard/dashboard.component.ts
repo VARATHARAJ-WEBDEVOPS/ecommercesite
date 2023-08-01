@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +12,16 @@ export class DashboardComponent implements OnInit {
   offsetX = 0;
   slideWidth = window.innerWidth;
   banners: any;
-  constructor(public router: Router, public adminService: AdminService) {
+  productList: any[] = [];
+  categories: string[] = [];
+  selectedCategory: string = 'all';
+  filteredProducts: any[] = [];
+  searchTerm: string = '';
+
+  constructor(public router: Router, public productService: ProductService, public adminService: AdminService) {
   }
 
-   isSticky = false;
+  isSticky = false;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
@@ -23,21 +30,56 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token')  === null ){
+    if (localStorage.getItem('token') === null) {
       this.router.navigateByUrl('');
       alert('un Autherized User!');
     } try {
       this.adminService.getBanners().subscribe(
         (data) => {
           this.banners = data;
-        
-      console.log(this.banners);
+
+          console.log(this.banners);
         });
     } catch (error) {
       console.log(error)
-    }   
+    }
+    this.getAll();
+    this.categorizeProducts();
+    this.filterProductsByCategory();
   }
-  
+
+  private categorizeProducts() {
+    this.categories = Array.from(new Set(this.productList.map((p) => p.catogory)));
+
+  }
+
+  getAll() {
+    this.productService.getProducts().subscribe((products) => {
+      this.productList = products;
+      this.categorizeProducts();
+      this.filterProductsByCategory();
+    });
+  }
+
+
+  filterProductsByCategory() {
+    this.filteredProducts =
+      this.selectedCategory === 'all'
+        ? this.productList
+        : this.productList.filter((product) => product.catogory === this.selectedCategory);
+  }
+
+  searchProducts() {
+    if (this.searchTerm.trim() === '') {
+      this.getAll();
+    } else {
+      this.filteredProducts = this.filteredProducts.filter(product =>
+        Object.values(product).some(value =>
+          String(value).toLowerCase().includes(this.searchTerm.toLowerCase()))
+      );
+    }
+  }
+
   slideLeft() {
     this.offsetX += this.slideWidth;
     this.offsetX = Math.min(0, this.offsetX);
