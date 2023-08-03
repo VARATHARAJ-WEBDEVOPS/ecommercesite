@@ -40,7 +40,7 @@ export class AccountComponent implements OnInit {
     if (this.email !== null) {
       this.userService.getUserByEmail(this.email)
         .subscribe(data => {
-          this.userData = data; // Store the user data in the userData array
+          this.userData = data;
         });
     }
   }

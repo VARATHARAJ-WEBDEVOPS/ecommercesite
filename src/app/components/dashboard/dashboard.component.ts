@@ -2,6 +2,16 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  number: string;
+  wishlist?: [];
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +22,32 @@ export class DashboardComponent implements OnInit {
   offsetX = 0;
   slideWidth = window.innerWidth;
   banners: any;
+
+  openProductDiolog: boolean = false;
+  openPaymentDiolog: boolean = false;
+
+  diologData: any;
+  quantity: number = 1;
+  reviewMessage: any;
+  grandTotal: any;
+  pricePerItem: number = 0;
+
+  doorno: string = '';
+  street: string = '';
+  city: string = '';
+  pincode: any = '';
+  showError: string = "";
+
   productList: any[] = [];
   categories: string[] = [];
   selectedCategory: string = 'all';
   filteredProducts: any[] = [];
   searchTerm: string = '';
 
-  constructor(public router: Router, public productService: ProductService, public adminService: AdminService) {
+  email!: string | null;
+  userData: User[] = [];
+
+  constructor(public router: Router, public userService: UserService, public productService: ProductService, public adminService: AdminService) {
   }
 
   isSticky = false;
@@ -46,11 +75,13 @@ export class DashboardComponent implements OnInit {
     this.getAll();
     this.categorizeProducts();
     this.filterProductsByCategory();
+    this.email = localStorage.getItem('token');
+    this.getUserData();
+    this.isWishlist();
   }
 
   private categorizeProducts() {
     this.categories = Array.from(new Set(this.productList.map((p) => p.catogory)));
-
   }
 
   getAll() {
@@ -61,6 +92,34 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  openProduct(product: any) {
+    this.diologData = product;
+    this.grandTotal = product.Price;
+    this.pricePerItem = product.Price;
+    console.log(product);
+    console.log(this.diologData);
+    this.openProductDiolog = true;
+  }
+
+  increaseQuantity() {
+    this.quantity++;
+    this.calculateGrandTotal();
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+      this.calculateGrandTotal();
+    }
+  }
+
+  calculateGrandTotal() {
+    this.grandTotal = this.quantity * this.pricePerItem;
+  }
+
+  removePricePerItem() {
+    this.pricePerItem = 0;
+  }
 
   filterProductsByCategory() {
     this.filteredProducts =
@@ -93,4 +152,40 @@ export class DashboardComponent implements OnInit {
   reload() {
     window.location.reload();
   }
+
+  getUserData(): void {
+    if (this.email !== null) {
+      this.userService.getUserByEmail(this.email)
+        .subscribe(data => {
+          this.userData = data;
+          console.log(this.userData);
+        });
+    }
+  }
+
+  isWishlist() {
+
+  }
+
+  toggleWishlist(id: any) {
+
+  }
+
+  validation () {
+    if ( this.doorno === '' ) {
+      this.showError = "please enter your Plat / Door No.";
+    } else if ( this.street === '' ) {
+      this.showError = "Please enter your Street Name";
+    } else if ( this.city === '' ) {
+      this.showError = "Please enter your City";
+    }else if ( this.pincode === '' ) {
+      this.showError = "Please enter your Pincode";
+    }else if ( this.pincode !== 6 ) {
+      this.showError = "Please enter Valid Pincode";
+    }
+  }
+
+
+
 }
+
