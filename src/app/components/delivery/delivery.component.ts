@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/services/admin.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -10,40 +10,28 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class DeliveryComponent implements OnInit {
 
-  constructor(public router: Router, public adminService: AdminService) { }
+  deliveryData :any;
 
-  banners: any;
-  updatedBanners: any = {};
+  constructor(public router: Router, public userService: UserService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }
-    try {
-      this.adminService.getBanners().subscribe(
-        (data) => {
-          this.banners = data;
-          this.updatedBanners = { ...data };
-          console.log(this.banners);
-        });
-    } catch (error) {
-      console.log(error)
-    }
+    this.getDeliveryData()
+  
+  }
+
+  getDeliveryData() {
+    this.userService.getEmployeeData().subscribe(resp => {
+      this.deliveryData = resp;
+      console.log(resp);
+    });
   }
 
   logout() {
     localStorage.removeItem('admin');
     this.router.navigateByUrl('');
-  }
-
-  updateBanners(): void {
-    const id = 1;
-    this.adminService.updateBanners(id, this.updatedBanners).subscribe(
-      () => {
-        console.log('Banners updated successfully!');
-        this.ngOnInit();
-      }
-    );
   }
 
 }

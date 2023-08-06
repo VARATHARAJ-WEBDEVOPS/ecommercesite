@@ -285,3 +285,286 @@
     bottom: 2vh;
     color: #fff;
 }
+
+@media screen and (max-width: 767px) {
+    .nav {
+        display: none;
+    }
+    
+    .nav ul {
+        display: flex;
+        list-style: none;
+    }
+    
+    .nav li {
+        padding-inline: 8vh;
+    }
+    
+    .nav a {
+        text-decoration: none;
+        font-size: 3.5vh;
+        color: #ed9b40;
+        padding-bottom: 2vh;
+    }
+    
+    .nav a:hover {
+        border-bottom: 2px solid #000;
+    }
+    
+    .home {
+        background-color: #43506c;
+        width: 100%;
+        height: 85vh;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .home button {
+        padding-inline: 6vh;
+        padding-block: 2vh;
+        background-color: #e9820e;
+        margin: 5vh;
+        color: #e9e9e8;
+        border-radius: 1vh;
+        border: none;
+    }
+    
+    .home button:hover {
+        background-color: #ed9b40;
+    }
+    
+    .home h1 {
+        padding: 5vh;
+        font-size: 6vh;
+        margin-top: 20vh;
+    }
+    
+    .home .container {
+        width: 95%;
+        height: 85vh;
+        background-color: #e9e9e8;
+        border-bottom-right-radius: 5vh;
+        border-bottom-left-radius: 5vh;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav {
+        /* Add your regular styles for the navigation bar */
+        height: 60px;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+    }
+    
+    .nav.scrolled a {
+        /* Styles to apply when the page is scrolled above 50% */
+        color: #f2f2f2;
+        /* Change to the desired background color */
+    }
+    
+    .nav.scrolled a:hover {
+        border-bottom: 2px solid #fff;
+    }
+    
+    /*  ----------     contect us page styles      ----------  */
+    
+    .contactUs {
+        background-color: #43506c;
+        width: 100%;
+        height: 160vh;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .contactUs h1 {
+        color: #fff;
+        position: absolute;
+        top: 2vh;
+        font-size: 3vh;
+        font-weight: bold;
+        padding-bottom: 1vh;
+        border-bottom: 1px solid #e9820e;
+    }
+    
+    .contactUs .left {
+        width: 75%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #bed2ed;
+        margin-top: 10vh;
+        border-radius: 5vh;
+        margin-left: 1vh;
+
+    }
+    
+    .contactUs .right {
+        width: 80%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        
+        background-color: #bed2ed;
+        margin-top: 5vh;
+        border-radius: 5vh;
+        margin-left: 1vh;
+    }
+    
+    .items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 2vh;
+    }
+    
+    .contactUs .left i {
+        color: #ca790f;
+        font-size: 5vh;
+        margin-block: 1%;
+    }
+    
+    .contactUs .left h4 {
+        color: #412D12;
+        margin-block: 1%;
+        font-weight: 600;
+    }
+    
+    .contactUs .left p {
+        color: #412D12;
+        font-weight: 100;
+        font-size: 2vh;
+        margin-block: 1%;
+    }
+    
+    .contactUs .right button, .contactUs .right h2,
+    .contactUs .right input,
+    .contactUs .right p,
+    .contactUs .right textarea {
+        color: #412D12;
+        margin-inline: 5%;
+    }
+    
+    .contactUs .right input,
+    .contactUs .right textarea {
+        width: 80%;
+        padding: 1.5vh;
+        background-color: #bed2ed;
+        border: none;
+        border: 0.5px solid #412D12;
+        border-radius: 1vh;
+    }
+    
+    .contactUs .right h2 {
+        color: #ca790f;
+        font-weight: bold;
+        font-size: 3vh;
+    }
+    
+    .contactUs .right p {
+        text-align: justify;
+        font-weight: 100;
+        font-size: 2vh;
+    }
+    
+    .contactUs .right button {
+        padding-inline: 5vh;
+        padding-block: 2vh;
+        border-radius: 1vh;
+        background-color: #ca790f;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+    }
+    
+    /*  ----------     About us page styles      ----------  */
+    
+    .aboutUs {
+        background-color: #43506c;
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    
+    .aboutUs .container {
+        width: 95%;
+        height: 80vh;
+        background-color: #ef4b4c;
+        border-top-right-radius: 5vh;
+        border-top-left-radius: 5vh;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    
+    .aboutUs .container h1 {
+        color: #e9e9e8;
+        position: absolute;
+        top: 4.5vh;
+        font-weight: bold;
+        font-size: 5vh;
+    }
+    
+    .aboutUs .container .left h1 {
+        position: static !important;
+        font-size: 8vh;
+        padding: 1vh;
+        margin-top: 5vh;
+        text-align: center;
+    }
+    
+    .aboutUs .container .left p {
+        color: white;
+    }
+    
+    .aboutUs .container .left {
+        width: 50%;
+        height: 40vh;
+        border-right: none;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .aboutUs .container .right {
+        width: 50%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .aboutUs .container .right p {
+        color: white;
+        text-align: center;
+        margin-inline: 0;
+    }
+    
+    .aboutUs .container button {
+        padding: 2vh;
+        background-color: #ef4b4c;
+        border: 2px solid #fff;
+        border-radius: 1vh;
+        color: #fff;
+    }
+    
+    .bottom {
+        position: absolute;
+        bottom: 2vh;
+        color: #fff;
+    }
+        
+}

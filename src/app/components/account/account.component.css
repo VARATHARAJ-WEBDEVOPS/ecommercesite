@@ -114,3 +114,13 @@ button {
 #topic i {
     color: #c95e29;
 }
+
+@media screen and (max-width: 767px) {
+    #title {
+        display: none;
+    }
+    
+    #topic i {
+        margin-top: 1vh;
+    }
+}

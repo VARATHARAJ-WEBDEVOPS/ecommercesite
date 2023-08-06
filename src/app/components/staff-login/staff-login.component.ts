@@ -41,7 +41,7 @@ export class StaffLoginComponent implements OnInit {
 
   performLogin() {
     const loginData: User = { Phone: this.Phone, EID: this.EID };
-    this.http.get<User[]>('http://localhost:3000/employee').subscribe(
+    this.http.get<User[]>('https://database-cflh.onrender.com/employee').subscribe(
       (users: User[]) => {
         const foundUser = users.find(user => user.Phone === loginData.Phone && user.EID === loginData.EID);
         if (foundUser) {

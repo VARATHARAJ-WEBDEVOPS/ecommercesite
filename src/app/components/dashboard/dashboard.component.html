@@ -32,11 +32,12 @@
         <input type="text" type="text" [(ngModel)]="searchTerm" (keyup)="searchProducts()"
             placeholder="🔎︎  Search product...">
         <button>Search</button>
-        <i class="bi bi-arrow-repeat" style="padding-inline: 3vh; border-right: 1.5px solid #f6b931;"
+        <i id="refresh" class="bi bi-arrow-repeat" style="padding-inline: 3vh; border-right: 1.5px solid #f6b931;"
             (click)="reload()"></i>
         <i class="bi bi-heart" style="padding-left: 3vh;"></i>
         <p style="padding-right: 3vh; border-right: 1.5px solid #f6b931;">11</p>
     </div>
+     <!---------------Search Bar Ends------------->
     <div class="slider-container">
         <div class="slider-wrapper" [style.transform]="'translateX(' + offsetX + 'px)'">
             <div class="slider-slide"
@@ -62,9 +63,14 @@
                     <ul style="list-style: none;">
                         <li style="font-size: 3vh;">{{product.Name}}</li>
 
-                        <li style="font-size: 12px;margin: 1vh;">{{product.Stock}} - items only left</li>
+                        <div *ngIf="product.Stock > 0">
+                            <li style="font-size: 12px; margin: 1vh;">{{ product.Stock }} - items only left</li>
+                        </div>
+                        <div *ngIf="product.Stock === 0">
+                            <li style="font-size: 12px; margin: 1vh; color: red;">Out of Stock</li>
+                        </div>
                     </ul>
-                    <ul
+                    <ul id="Cardprice"
                         style="display: flex; list-style: none; align-items: center; justify-content: space-around; width: 100%;">
                         <li style="font-size: 3vh;">{{product.Price}}/-</li>
                         <li style="font-size: 14px; color: rgb(255, 96, 96);"><s>{{product.OriginalPrice}}</s></li>
@@ -73,9 +79,14 @@
                     <ul
                         style="position: absolute;align-items: center;justify-content: space-evenly; width: 100%; bottom: 10%;list-style: none; display: flex;">
                         <li>
-                            <button
-                                style="color: #fff; border: none;padding-inline: 5vh; z-index: 5; padding-block: 1vh; background-color: rgb(0, 119, 255); border-radius: 0.7vh;"
-                                (click)=" openProduct(product); openProductDiolog = false; openPaymentDiolog = true">Buy</button>
+                            <div *ngIf="product.Stock > 0">
+                                <button
+                                    style="color: #fff; border: none;padding-inline: 5vh; z-index: 5; padding-block: 1vh; background-color: rgb(0, 119, 255); border-radius: 0.7vh;"
+                                    (click)=" openProduct(product); openProductDiolog = false; openPaymentDiolog = true">Buy</button>
+                            </div>
+                            <div *ngIf="product.Stock === 0"> <button style="color: #fff; border: none;padding-inline: 5vh; z-index: 5; padding-block: 1vh;   background-color: rgb(0, 119, 255);opacity: 0.5;
+                                    cursor: not-allowed; border-radius: 0.7vh;">Buy</button>
+                            </div>
                         </li>
                         <li>
                             <i *ngIf="!product.wishlist" (click)="toggleWishlist(product.id)" class="bi bi-heart"></i>
@@ -90,30 +101,50 @@
         <div class="cancelButton" (click)="openProductDiolog = false">
             <button><i class="bi bi-x-square"></i></button>
         </div>
-        <div class="left" *ngIf="diologData">
+        <div class="left">
+
             <div class="image">
                 <img src="{{diologData.imgUrl}}" alt="productImg">
             </div>
-            <div class="buttons">
-                <button (click)=" openProductDiolog = false; openPaymentDiolog = true" style="z-index: 10000;">Buy <i
+
+            <div class="buttons" *ngIf="diologData.Stock > 0">
+                <button (click)=" openProductDiolog = false; openPaymentDiolog = true" style="z-index: 10000;">Buy<i
                         class="bi bi-cart4"></i></button>
                 <button style="background-color: #ffae00;">wishlist <i class="bi bi-heart"></i></button>
             </div>
+
+            <div class="buttons" *ngIf="diologData.Stock === 0">
+                <button style="z-index: 10000;opacity: 0.5; cursor: not-allowed;">Buy<i
+                        class="bi bi-cart4"></i></button>
+                <button style="background-color: #ffae00;">wishlist <i class="bi bi-heart"></i></button>
+            </div>
+
         </div>
-        <div class="right" *ngIf="diologData">
+        <div class="right">
+
             <div class="title">
+
                 <h1>{{diologData.Name}}</h1>
-                <p>{{diologData.Stock}} Items only left</p>
+
+                <div *ngIf="diologData.Stock > 0">
+                    <p>{{diologData.Stock}} Items only left</p>
+                </div>
+
+                <div *ngIf="diologData.Stock === 0">
+                    <p style="color: red;">Out of stock</p>
+                </div>
+
                 <h1>{{diologData.Price}}/-</h1>
                 <h2><s>{{diologData.OriginalPrice}}</s></h2>
                 <h5>{{diologData.Offer}}% offer</h5>
+
             </div>
             <div class="review">
                 <div class="textbox">
-                    <input type="text" placeholder="Send your reviews...">
-                    <i class="bi bi-send-fill"></i>
+                    <input type="text" placeholder="Send your reviews..." [(ngModel)]="postMessage" >
+                    <i class="bi bi-send-fill" (click)="sendReview();"></i>
                 </div>
-                <div class="content" *ngIf="diologData">
+                <div class="content">
                     <div class="card" *ngFor="let review of diologData.review">
                         <h4 style="margin-top:2px">{{review.user}}</h4>
                         <p style="font-weight: 100; font-size: 11px; padding: 5px;">{{review.message}}</p>
@@ -134,9 +165,9 @@
                 <input type="number" placeholder="Pincode" name="pincode" [(ngModel)]="pincode">
                 <p style="color: red;">{{showError}}</p>
             </form>
-            <div class="amount" *ngIf="diologData">
+            <div class="amount">
                 <div class="detail">
-                    <div>
+                    <div class="productName">
                         <p>{{diologData.Name}}</p>
                         <p>Shipping Fee</p>
                     </div>
@@ -153,6 +184,7 @@
                         <button (click)="increaseQuantity()">+</button>
                     </div>
                 </div>
+                <p style="color: red;" id="paymentError">{{showStockIssue}}</p>
                 <div class="total">
                     <h3>Grand Total</h3>
                     <h3>{{grandTotal}}/-</h3>
@@ -160,9 +192,9 @@
             </div>
         </div>
         <div class="actions">
-            <button style="background-color: red;" (click)="this.quantity = 1; openProductDiolog = false; openPaymentDiolog = false">CANCEL
-                <i class="bi bi-x-square"></i></button>
-            <button (click)="validation()">PAY <i class="bi bi-cart4"></i></button>
+            <button style="background-color: red;" (click)="performPaymentCancel()">Cancel<i
+                    class="bi bi-x-square"></i></button>
+            <button (click)="validation();">Place Order <i class="bi bi-cart4"></i></button>
         </div>
     </div>
 </div>

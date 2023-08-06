@@ -10,7 +10,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  private ProductUrl = 'http://localhost:3000/products';   //employee
+  private ProductUrl = 'https://database-cflh.onrender.com/products';  
 
   getProducts(): Observable<product[]> {
     return this.http.get<any[]>(this.ProductUrl);

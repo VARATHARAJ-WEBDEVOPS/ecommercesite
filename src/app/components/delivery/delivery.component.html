@@ -12,6 +12,29 @@
         <button (click)="logout()">LOGOUT</button>
     </div>
     <div class="content">
-          
+        <h1>Delivery</h1>
+        <div class="table-container">
+            <table>
+                <tbody *ngFor="let Data of deliveryData">
+                    <td>DERY01</td>
+                    <td style="max-width: 35%; text-align: left;">
+                        {{Data.userName}}<br>
+                        {{Data.phoneNo}}<br>
+                        {{Data.Address}}
+                    </td>
+                    <td>
+                        {{Data.productName}}
+                    </td>
+                    <td>
+                        {{Data.PID}}
+                    </td>
+                    <td>{{Data.productPrice}}</td>
+                    <td>X {{Data.quantity}}</td>
+                    <td>
+                        {{Data.grandTotal}} <br>
+                    </td>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

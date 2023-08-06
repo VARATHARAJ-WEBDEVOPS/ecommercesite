@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   performLogin() {
     const loginData: User = { email: this.email, password: this.password };
 
-    this.http.get<User[]>('http://localhost:3000/user').subscribe(
+    this.http.get<User[]>('https://database-cflh.onrender.com/user').subscribe(
       (users: User[]) => {
         const foundUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
         if (foundUser) {

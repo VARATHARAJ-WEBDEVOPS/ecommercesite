@@ -17,13 +17,12 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
-      // The ID of the entry you want to fetch
     }
       try {
         this.adminService.getBanners().subscribe(
           (data) => {
             this.banners = data;
-            this.updatedBanners = { ...data }; // Make a copy for editing
+            this.updatedBanners = { ...data }; 
         console.log(this.banners);
           });
       } catch (error) {
@@ -37,11 +36,10 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   updateBanners(): void {
-    const id = 1; // The ID of the entry you want to update
+    const id = 1; 
     this.adminService.updateBanners(id, this.updatedBanners).subscribe(
       () => {
         console.log('Banners updated successfully!');
-        // If you want to refresh the displayed banners, you can call ngOnInit() again.
         this.ngOnInit();
       }
     );

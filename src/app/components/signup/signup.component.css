@@ -97,6 +97,11 @@ button:hover {
     color: red;
 }
 
+#input::placeholder {
+    color: #9e9c9c;
+    font-weight: bold;
+}
+
 #signupTopic {
     position: fixed;
     top: 2vh;
@@ -110,4 +115,58 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .signup {
+        flex-wrap: wrap;
+        height: 110vh;
+    }
+
+    .right {
+        height: 60vh;
+    }
+
+    .left {
+        height: 50vh;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .signup .right form {
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 3vh;
+    margin-bottom: 2vh;
+
+    }
+
+    p {
+        font-size: 1.6vh;
+    }
+
+    #input {
+        padding: 2vh;
+        margin: 1vh;
+    }
+
+
+    button {
+        padding-block: 2.3vh;
+        border-radius: 2vh;
+        margin-block: 2vh;
+    }
+
+    input[type="checkbox"] {
+        width: 2vh;
+    }
+
+    .spesific {
+        padding-top: 1vh;
+    }
 }

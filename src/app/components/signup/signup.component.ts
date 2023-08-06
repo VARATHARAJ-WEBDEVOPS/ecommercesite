@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
   }
 
   performLogin() {
-    this.http.get<User[]>('http://localhost:3000/user').subscribe(
+    this.http.get<User[]>('https://database-cflh.onrender.com/user').subscribe(
       (users: User[]) => {
         const foundUser = users.find(user => user.email === this.email);
         if (foundUser) {

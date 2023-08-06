@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000'; // JSON Server URL
+  private apiUrl = 'https://database-cflh.onrender.com'; // JSON Server URL
 
   constructor(private http: HttpClient) {}
 

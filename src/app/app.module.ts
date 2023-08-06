@@ -13,6 +13,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AccountComponent } from './components/account/account.component';
 import { EmployeesComponent } from './components/employees/employees.component';
@@ -45,6 +46,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

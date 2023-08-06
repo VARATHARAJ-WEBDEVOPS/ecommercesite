@@ -1,17 +1,14 @@
-<div class="account">
-    <div *ngIf="userData.length === 0">
-        <p>No user found with the provided email.</p>
-      </div>
+<div class="account" *ngIf="userData.length != 0">
     <div id="topic">
         <i class="bi bi-arrow-left-circle-fill" (click)="this.router.navigateByUrl('/dashboard');"></i>
-        <h1>User's Profile</h1>
+        <h1 id="title">User's Profile</h1>
     </div>
     <div class="top">
         <div class="profileRound">
             <i class="bi bi-person-fill" id="user"></i>
         </div>
     </div>
-    <div class="bottom"  *ngIf="userData.length > 0">
+    <div class="bottom" *ngIf="userData.length > 0">
         <h1 *ngFor="let user of userData">Hey! {{ user.name }}</h1>
         <p *ngFor="let user of userData">{{ user.email }}</p>
         <p *ngFor="let user of userData">{{ user.number }}</p>

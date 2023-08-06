@@ -8,7 +8,7 @@ import { employee } from '../components/employees/employees.component';
 })
 export class AdminService {
 
-  private apiUrl = 'http://localhost:3000/banners'; // Banner Url
+  private apiUrl = 'https://database-cflh.onrender.com/banners'; // Banner Url
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,7 @@ export class AdminService {
   }
 
 
-  private EmployeeUrl = 'http://localhost:3000/employee';   //employee
+  private EmployeeUrl = 'https://database-cflh.onrender.com/employee';   //employee
 
 
   postEmployeeData(data: employee): Observable<employee> {
