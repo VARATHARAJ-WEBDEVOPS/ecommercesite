@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
   selectedCategory: string = 'all';
   filteredProducts: any[] = [];
   searchTerm: string = '';
+  isLoading: boolean = true;
 
   constructor(private productService: ProductService, public router: Router) { }
 
@@ -34,6 +35,7 @@ export class ProductComponent implements OnInit {
   getAll() {
     this.productService.getProducts().subscribe((products) => {
       this.productList = products;
+      this.isLoading = false;
       this.categorizeProducts();
       this.filterProductsByCategory();
     });

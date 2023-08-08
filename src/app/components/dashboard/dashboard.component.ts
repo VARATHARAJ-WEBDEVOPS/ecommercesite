@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   offsetX = 0;
   slideWidth = window.innerWidth;
   banners: any;
-
+  isLoading: boolean =  true;
   openProductDiolog: boolean = false;
   openPaymentDiolog: boolean = false;
 
@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
   createOrderForm!: FormGroup;
   postMessage: any;
 
+
   constructor(public router: Router,
     public userService: UserService,
     public productService: ProductService,
@@ -69,14 +70,16 @@ export class DashboardComponent implements OnInit {
     this.isSticky = window.pageYOffset >= 100;  }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token') === null) {
+    if (localStorage.getItem('token') === null && localStorage.getItem('Notatoken') != '1') {
       this.router.navigateByUrl('');
       alert('un Autherized User!');
-    } try {
+    } 
+    
+        try {
       this.adminService.getBanners().subscribe(
         (data) => {
           this.banners = data;
-
+          this.isLoading = false;
           console.log(this.banners);
         });
     } catch (error) {
@@ -100,7 +103,7 @@ export class DashboardComponent implements OnInit {
       quantity: [''],
       grandTotal: ['']
     });
-
+    localStorage.setItem('Notatoken', '2');
   }
 
   private categorizeProducts() {

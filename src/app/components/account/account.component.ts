@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
 
   email!: string | null;
   userData: User[] = []; 
-
+  isLoading: boolean = false;
 
   constructor(public router: Router, public userService: UserService) { }
 
@@ -38,8 +38,10 @@ export class AccountComponent implements OnInit {
 
   getUserData(): void {
     if (this.email !== null) {
+      this.isLoading = true;
       this.userService.getUserByEmail(this.email)
         .subscribe(data => {
+          this.isLoading = false;
           this.userData = data;
         });
     }

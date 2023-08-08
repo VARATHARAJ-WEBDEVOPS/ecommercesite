@@ -45,11 +45,15 @@
             <h2>Send us a message</h2>
             <p>If you may have any other needs or quries related to our application, you can send me message from here.
                 It's my pleasure to help you</p>
-            <input type="text" required name="" id="" placeholder="Enter your Name">
-            <input type="email" required name="" id="" placeholder="Enter your Email">
-            <textarea id="myTextArea" rows="5" cols="40" required name="" id=""
+            <input type="text" required name="" id="" [(ngModel)]="Name" name="Name" placeholder="Enter your Name">
+            <input type="email" required name="" id="" [(ngModel)]="Email" name="Email" email
+                placeholder="Enter your Email">
+            <textarea id="myTextArea" [(ngModel)]="Message" name="Message" rows="5" cols="40" required name="" id=""
                 placeholder="Enter your Message..."></textarea>
-            <button>SEND</button>
+            <div style="display: flex; justify-content: center; width: 100%; color: red;">
+                <h5>{{showError}}</h5>
+            </div>
+            <button (click)="sendFeedback()">SEND</button>
         </div>
     </section>
     <section class="aboutUs" id="about">

@@ -13,12 +13,15 @@
             <p id="error">{{showError}}</p>
             <div class="spesific">
                 <div id="spesific_left">
-                    <input type="checkbox" name="" id="check">
+                    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" id="check"  [ngModelOptions]="{ standalone: true }">
                     <p>Keep me signed in</p>
                 </div>             
                 <p (click)="moveToLogin()">Already a member?</p>
             </div>
-            <button type="submit">SIGNUP</button>
+            <button type="submit" *ngIf="!isLoading">SIGNUP</button>
+            <div class="loading-spinner" *ngIf="isLoading">
+                <div class="spinner"></div>
+            </div>
         </form>
     </div>
 </div>

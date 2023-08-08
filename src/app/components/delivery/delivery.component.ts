@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DeliveryComponent implements OnInit {
 
   deliveryData :any;
+  isLoading: boolean = true;
 
   constructor(public router: Router, public userService: UserService) { }
 
@@ -26,6 +27,7 @@ export class DeliveryComponent implements OnInit {
     this.userService.getEmployeeData().subscribe(resp => {
       this.deliveryData = resp;
       console.log(resp);
+      this.isLoading = false;
     });
   }
 

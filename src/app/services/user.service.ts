@@ -10,16 +10,27 @@ import { User } from '../components/account/account.component';
 export class UserService {
   private apiUrl = 'https://database-cflh.onrender.com/user';
   private OrderUrl = 'https://database-cflh.onrender.com/orders';
+  private FeedbackUrl = 'https://database-cflh.onrender.com/feedback';
 
-  constructor(private http: HttpClient) {}
+  url: any;
+
+  constructor(private http: HttpClient) { }
 
   getUserByEmail(email: string): Observable<User[]> {
-    const url = `${this.apiUrl}?email=${email}`;
-    return this.http.get<User[]>(url);
+    if (!isNaN(Number(email.charAt(0)))) {
+      this.url = `${this.apiUrl}?number=${email}`;
+    } else {
+      this.url = `${this.apiUrl}?email=${email}`
+    }
+    return this.http.get<User[]>(this.url);
   }
 
-  postOrderData (data: any) {
-    return this.http.post<any>(this.OrderUrl,data);
+  postOrderData(data: any) {
+    return this.http.post<any>(this.OrderUrl, data);
+  }
+
+  postFeedbackData(data: any) {
+    return this.http.post<any>(this.FeedbackUrl, data);
   }
 
   getEmployeeData(): Observable<any> {

@@ -11,7 +11,10 @@
         </ul>
         <button (click)="logout()">LOGOUT</button>
     </div>
-    <div class="content">
+    <div class="content" *ngIf="isLoading" style="height: 100%; justify-content: center;align-items: center; display: flex;">
+        <div class="spinner" ></div>
+    </div>
+    <div class="content" *ngIf="!isLoading">
         <div class="search">
             <div class="filter-dropdown" style="display: flex;">
                 <select id="categorySelect" [(ngModel)]="selectedCategory" name="selectedCategory" (change)="filterProductsByCategory()">

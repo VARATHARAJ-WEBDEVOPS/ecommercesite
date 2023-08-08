@@ -13,6 +13,7 @@ export class LayoutComponent implements OnInit {
 
   banners: any;
   updatedBanners: any = {};
+  isLoading: boolean = true;
 
   ngOnInit(): void {
     if (localStorage.getItem('admin') === null) {
@@ -23,6 +24,7 @@ export class LayoutComponent implements OnInit {
           (data) => {
             this.banners = data;
             this.updatedBanners = { ...data }; 
+            this.isLoading = false;
         console.log(this.banners);
           });
       } catch (error) {

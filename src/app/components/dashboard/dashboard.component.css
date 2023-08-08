@@ -155,6 +155,7 @@ select:focus {
     display: flex;
     transition: transform 0.3s ease;
     width: 300%;
+
 }
 
 
@@ -165,6 +166,9 @@ select:focus {
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .slider-button {
@@ -191,6 +195,25 @@ select:focus {
     right: 1vh;
 }
 
+#card {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.spinner {
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /*-------------slider Ends---------------*/
 

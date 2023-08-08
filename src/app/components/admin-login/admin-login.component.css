@@ -8,6 +8,10 @@
     background-color: #dfdbdb;
 }
 
+.mobile {
+    display: none;
+}
+
 .content {
     width: 60vh;
     height: 60vh;
@@ -40,7 +44,7 @@
     margin-top: 3vh;
 }
 
-.adminlogin input{
+.adminlogin input {
     width: 70%;
     height: 3vh;
     margin: 1vh;
@@ -61,12 +65,13 @@
     margin-bottom: 2.5vh;
     border-radius: .5vh;
 }
+
 .adminlogin button:hover {
     background-color: #1869ac;
 }
 
 .adminlogin p {
-    color:#7a7979 ;
+    color: #7a7979;
 }
 
 .adminlogin p span {
@@ -76,7 +81,7 @@
 
 #user_icon {
     font-size: 7vh;
-    color:white;
+    color: white;
 }
 
 #adminLogo {
@@ -110,6 +115,33 @@ form {
     align-items: center;
 }
 
-i{
+i {
     color: white;
+}
+
+@media screen and (max-width: 767px) {
+    .adminlogin {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .mobile h1 {
+        font-size: 5vh;
+        color: #0D4979;
+        margin: 5vh;
+    }
+
+    .mobile h2 {
+        color: red;
+        text-align: center;
+    }
+
 }

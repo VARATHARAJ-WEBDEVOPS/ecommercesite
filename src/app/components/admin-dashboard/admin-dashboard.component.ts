@@ -8,41 +8,28 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+  feedbackData: any = [];
+  isLoading: boolean = true;
 
   constructor(public router: Router, public adminService: AdminService) { }
-
-  banners: any;
-  updatedBanners: any = {};
 
   ngOnInit(): void {
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }
-      try {
-        this.adminService.getBanners().subscribe(
-          (data) => {
-            this.banners = data;
-            this.updatedBanners = { ...data }; 
-        console.log(this.banners);
-          });
-      } catch (error) {
-        console.log(error)
-      }      
+    this.getFeedback();
   }
 
   logout() {
     localStorage.removeItem('admin');
     this.router.navigateByUrl('');
   }
-
-  updateBanners(): void {
-    const id = 1; 
-    this.adminService.updateBanners(id, this.updatedBanners).subscribe(
-      () => {
-        console.log('Banners updated successfully!');
-        this.ngOnInit();
-      }
-    );
+  
+  getFeedback() {
+    this.adminService.getFeedbackData().subscribe( resp => {
+      console.log(resp);
+      this.feedbackData = resp;
+      this.isLoading = false;
+    });
   }
-
 }

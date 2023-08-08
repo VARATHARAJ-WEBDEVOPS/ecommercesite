@@ -70,6 +70,7 @@ export class StaffDashboardComponent implements OnInit {
 
   createProductForm!: FormGroup;
   updateEmployeeForm!: FormGroup;
+  isLoading: boolean = true;
 
   constructor(public router: Router,
     public adminService: AdminService,
@@ -127,6 +128,7 @@ export class StaffDashboardComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.ProductList = data;
+      this.isLoading = false;
         this.getLastEID();
       });
   }

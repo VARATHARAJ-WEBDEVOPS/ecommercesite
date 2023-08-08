@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 interface User {
   email: string;
   password: string;
+  number?: string;
 }
 
 @Component({
@@ -19,6 +20,9 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   showError: string = '';
+
+  isLoading: boolean = false;
+  rememberMe: boolean = false;
 
   moveToSignup() {
     this.router.navigateByUrl('/signup')
@@ -35,16 +39,24 @@ export class LoginComponent implements OnInit {
   }
 
   performLogin() {
+    this.isLoading = true;
+    this.showError = '';
     const loginData: User = { email: this.email, password: this.password };
 
     this.http.get<User[]>('https://database-cflh.onrender.com/user').subscribe(
       (users: User[]) => {
-        const foundUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+        const foundUser = users.find(user => user.email === loginData.email || user.number === loginData.email && user.password === loginData.password);
         if (foundUser) {
-          this.router.navigate(['/dashboard']);
-          localStorage.setItem('token', this.email);
+          if (this.rememberMe) {
+            localStorage.setItem('token', this.email);
+            this.router.navigateByUrl('/dashboard');
+          } else {
+            localStorage.setItem('Notatoken', '1');
+            this.router.navigateByUrl('/dashboard');
+          }
         } else {
           this.showError = "Invalid User!";
+          this.isLoading = false;
         }
       }
     );
@@ -57,7 +69,9 @@ export class LoginComponent implements OnInit {
       this.showError = "Please enter your Password";
     } else if (this.email === "") {
       this.showError = "Please enter your Email";
-    } else if (this.email && this.password) {
+    } else if (!this.rememberMe) {
+      this.showError = "please Check Keep me signed in!";
+    } else if (this.email && this.password ) {
       this.performLogin();
     } else {
       this.showError = "Invalid User!";

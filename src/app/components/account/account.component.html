@@ -1,4 +1,7 @@
-<div class="account" *ngIf="userData.length != 0">
+<div class="loading"  *ngIf="isLoading">
+    <div class="spinner"></div>
+</div>
+<div class="account" *ngIf="!isLoading">
     <div id="topic">
         <i class="bi bi-arrow-left-circle-fill" (click)="this.router.navigateByUrl('/dashboard');"></i>
         <h1 id="title">User's Profile</h1>
@@ -23,6 +26,5 @@
             </div>
         </div>
         <button (click)="logout()">LOGOUT</button>
-
     </div>
 </div>

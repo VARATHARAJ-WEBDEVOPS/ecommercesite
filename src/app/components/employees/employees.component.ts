@@ -26,6 +26,8 @@ export class EmployeesComponent implements OnInit {
   isButtonDisabled: boolean = false;
   selectedUser: any | null = null;
 
+  isLoading: boolean = true;
+
   Name: string = '';
   Phone: string = '';
   Section: string = '';
@@ -108,6 +110,7 @@ export class EmployeesComponent implements OnInit {
   getAll(): void {
     this.adminService.getEmployeeData().subscribe(resp => {
       this.EmployeeList = resp;
+      this.isLoading = false;
       console.log(resp);
       this.getLastEID();
     });

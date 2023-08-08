@@ -20,7 +20,6 @@
     height: 75vh;
     padding: 5%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: left;
     background-color: rgb(247, 251, 255);
@@ -67,16 +66,8 @@
     padding-inline: 1vh;
 }
 
-.layout-content {
+.left {
     width: 100%;
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.layout-content .left {
-    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -84,41 +75,79 @@
     align-items: center;
 }
 
-.layout-content .right {
-    width: 50%;
+.right {
+    width: 100%;
     height: 100%;
+}
+
+.right table {
+    width: 100%;
+    border: none;
+  }
+  
+  .right table th,
+  .right table td {
+    padding: 2vh
+  }
+  
+  .right table th {
+    text-align: center;
+    font-size: 1.8vh;
+  }
+  
+  .right table td {
+    text-align: center;
+    font-weight: 100 !important;
+    font-size: 1.9vh;
+  }
+  
+  .table-container {
+    max-height: 100%;
+    overflow-y: auto;
+    width: 100%;
+  }
+  
+  thead {
+    background-color: #e8eaf3;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  table,
+  th,
+  td {
+    border: none;
+  }
+  
+  tr {
+    border-radius: 50%;
+    margin-block: 5vh;
+  }
+  
+  tbody {
+    border: 1px solid #9ba0c97a;
+  }
+  
+  form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
+    justify-content: center;
+    width: 100%;
+  }
 
-.layout-content .left h3, .right h3 {
-    font-weight: 100;
-    margin-bottom: 1vh
-}
-
-.layout-content .left .img{  
-    min-width: 45vh;
-    min-height: 15vh;
-    margin: 2vh;
-    background-color: aliceblue;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.layout-content .right input{
-    margin: 1vh;
-    padding: 1vh;
-    padding-left: 2vh;
-width: 70%;
-height: 4vh;
-border: none;
-background-color: rgb(194, 194, 248);
-border-radius: 1vh;
-}
-
-#change {
-    margin-top: 4vh;
-}
+  .spinner {
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    border-top: 10px solid #051960;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

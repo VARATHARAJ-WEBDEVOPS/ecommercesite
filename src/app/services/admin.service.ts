@@ -8,7 +8,8 @@ import { employee } from '../components/employees/employees.component';
 })
 export class AdminService {
 
-  private apiUrl = 'https://database-cflh.onrender.com/banners'; // Banner Url
+  private apiUrl = 'https://database-cflh.onrender.com/banners';
+  private feedbackUrl = 'https://database-cflh.onrender.com/feedback'; 
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +47,10 @@ export class AdminService {
   getEmployeeByEmail(Phone: any): Observable<employee[]> {
     const url = `${this.EmployeeUrl}?Phone=${Phone}`;
     return this.http.get<employee[]>(url);
+  }
+
+  getFeedbackData(): Observable<any[]> {
+    return this.http.get<any[]>(this.feedbackUrl)
   }
 
 }
