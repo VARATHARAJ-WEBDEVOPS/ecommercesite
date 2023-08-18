@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DocsComponent implements OnInit {
   isScrolled: boolean = false;
+  isLoading: boolean = false;
 
   Name: string = '';
   Email: string = '';
@@ -54,14 +55,16 @@ export class DocsComponent implements OnInit {
       this.FeedbackForm.value.Name = this.Name;
       this.FeedbackForm.value.Email = this.Email;
       this.FeedbackForm.value.Message = this.Message;
+      this.isLoading = true;
       this.userservce.postFeedbackData(this.FeedbackForm.value).subscribe(res => {
         console.log(res);
+        this.isLoading = false;
         if (res) {
-          alert(`Hey! ${this.Name} Your Message Had been send! :)`);
+          alert(`Hey! ${this.Name} Your Message Had send! :)`);
           this.Name = "";
           this.Email = "";
           this.Message = "";
-          this.showError ="";
+          this.showError = "";
         }
       });
 

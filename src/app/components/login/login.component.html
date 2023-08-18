@@ -6,8 +6,8 @@
     <div class="right">
         <h1>Login Account</h1>
         <form (ngSubmit)="onSubmit()">
-            <input type="email" name="email" [(ngModel)]="email"  placeholder="Email Id / Phone No" id="input">
-            <input type="password"  name="password" [(ngModel)]="password" placeholder="Passward" id="input">
+            <input type="email" name="email" [(ngModel)]="email"  placeholder="Email or Phone Number" id="input">
+            <input type="password"  name="password" [(ngModel)]="password" placeholder="Password" id="input">
             <p id="error">{{showError}}</p>
             <div class="spesific">
                 <div id="spesific_left">

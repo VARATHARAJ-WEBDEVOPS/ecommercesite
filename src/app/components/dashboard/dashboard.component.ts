@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   slideWidth = window.innerWidth;
   banners: any;
   isLoading: boolean =  true;
+  isPlaceOrderLoading: boolean =  false;
   openProductDiolog: boolean = false;
   openPaymentDiolog: boolean = false;
 
@@ -231,11 +232,13 @@ export class DashboardComponent implements OnInit {
   }
 
   createOrder() {
+    this.isPlaceOrderLoading = true;
     this.reduceStock();
     this.putdatatoReactiveFoem();
     this.userService.postOrderData(this.createOrderForm.value).subscribe(resp => {
       console.log(resp);
       if (resp) {
+        this.isPlaceOrderLoading = false;
         this.openProductDiolog = false;
         this.openPaymentDiolog = false; 
         this.quantity = 1;

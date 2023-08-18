@@ -1,5 +1,5 @@
 <div class="mobile">
-    
+
 </div>
 <div class="dashboard">
     <div class="titlebar">
@@ -40,7 +40,7 @@
         <i class="bi bi-heart" style="padding-left: 3vh;"></i>
         <p style="padding-right: 3vh; border-right: 1.5px solid #f6b931;">11</p>
     </div>
-     <!---------------Search Bar Ends------------->
+    <!---------------Search Bar Ends------------->
     <div class="slider-container">
         <div class="slider-wrapper" [style.transform]="'translateX(' + offsetX + 'px)'">
             <div class="slider-slide"
@@ -61,9 +61,15 @@
     </div>
     <div class="products">
         <div class="products-container">
-            <div class="card" id="card" *ngIf="isLoading"><div class="spinner" ></div></div>
-            <div class="card" id="card" *ngIf="isLoading"><div class="spinner" ></div></div>
-            <div class="card" id="card" *ngIf="isLoading"><div class="spinner" ></div></div>
+            <div class="card" id="card" *ngIf="isLoading">
+                <div class="spinner"></div>
+            </div>
+            <div class="card" id="card" *ngIf="isLoading">
+                <div class="spinner"></div>
+            </div>
+            <div class="card" id="card" *ngIf="isLoading">
+                <div class="spinner"></div>
+            </div>
 
             <div class="card" *ngFor="let product of filteredProducts" (click)="openProduct(product)">
                 <div class="image">
@@ -151,7 +157,7 @@
             </div>
             <div class="review">
                 <div class="textbox">
-                    <input type="text" placeholder="Send your reviews..." [(ngModel)]="postMessage" >
+                    <input type="text" placeholder="Send your reviews..." [(ngModel)]="postMessage">
                     <i class="bi bi-send-fill" (click)="sendReview();"></i>
                 </div>
                 <div class="content">
@@ -202,9 +208,11 @@
             </div>
         </div>
         <div class="actions">
-            <button style="background-color: red;" (click)="performPaymentCancel()">Cancel<i
-                    class="bi bi-x-square"></i></button>
-            <button (click)="validation();">Place Order <i class="bi bi-cart4"></i></button>
+            <button style="background-color: red;" (click)="performPaymentCancel()"
+                *ngIf="!isPlaceOrderLoading">Cancel<i class="bi bi-x-square"></i></button>
+            <button (click)="validation();" *ngIf="!isPlaceOrderLoading">Place Order <i
+                    class="bi bi-cart4"></i></button>
+            <div class="spinner" *ngIf="isPlaceOrderLoading"></div>
         </div>
     </div>
 </div>

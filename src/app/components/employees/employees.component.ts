@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import swal from 'sweetalert2';
 
 export class employee {
   id!: any;
@@ -27,6 +26,8 @@ export class EmployeesComponent implements OnInit {
   selectedUser: any | null = null;
 
   isLoading: boolean = true;
+  isCreateLoading: boolean = false;
+  isUpdateLoading: boolean = false;
 
   Name: string = '';
   Phone: string = '';
@@ -99,6 +100,7 @@ export class EmployeesComponent implements OnInit {
         console.log(resp);
         this.resetFormFields();
         this.ngOnInit();
+        this.isCreateLoading = false;
       });
     alert('saved Successfully');
   }
@@ -126,12 +128,14 @@ export class EmployeesComponent implements OnInit {
   }
 
   updateData(id: number) {
+    this.isUpdateLoading = true;
     this.adminService.updateEmployeeData(id, this.updateEmployeeForm.value).subscribe(result =>
       console.log(result)
     );
     this.ngOnInit();
     this.showDialog = false;
     this.showTextBox = false;
+    this.isUpdateLoading = false;
   }
 
   editAction(employee: any) {
@@ -167,6 +171,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   existingEmployee() {
+    this.isCreateLoading = true;
     this.http.get<employee[]>('https://database-cflh.onrender.com/employee').subscribe(
       (employees: employee[]) => {
         const found = employees.find(employee => employee.EID === this.EID);
@@ -195,6 +200,8 @@ export class EmployeesComponent implements OnInit {
       this.showError = "Negative Value not valid";
     } else if (this.Section === "") {
       this.showError = "Please enter Section";
+    } else if (this.Gender === "") {
+      this.showError = "Please select gender";
     } else if (this.Name && this.Phone && this.Salary && this.Section) {
       this.existingEmployee();
     }

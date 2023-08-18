@@ -200,6 +200,14 @@ select:focus {
     align-items: center;
     display: flex;
 }
+.actions .spinner{
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-top: 6px solid #0b52bd !important;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
 
 .spinner {
     border: 6px solid rgba(0, 0, 0, 0.1);

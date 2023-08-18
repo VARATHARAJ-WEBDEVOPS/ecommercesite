@@ -25,12 +25,12 @@ export class AccountComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('token') === null){
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/')
     }
     this.email = localStorage.getItem('token');
     this.getUserData();
