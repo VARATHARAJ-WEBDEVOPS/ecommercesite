@@ -20,6 +20,10 @@ export class AccountComponent implements OnInit {
   email!: string | null;
   userData: User[] = []; 
   isLoading: boolean = false;
+  isDiolog: boolean = false;
+  userPhoneNumber!: string;
+  OrderData: any;
+  OrderGetData!: string;
 
   constructor(public router: Router, public userService: UserService) { }
 
@@ -43,8 +47,23 @@ export class AccountComponent implements OnInit {
         .subscribe(data => {
           this.isLoading = false;
           this.userData = data;
+          this.getOrderdata(data[0].number);
         });
     }
   }
 
+  getOrderdata(phone: any) {
+    this.userService.getOrderdata(phone).subscribe( res => {
+      console.log(res);
+      this.OrderData = res;
+    });
+  }
+  
+  cancelOrder(id: any) {
+    this.userService.deleteOrderData(id).subscribe( res => {
+      this.getUserData();
+      alert('Order Canceled Successfully!')
+      console.log(res);
+    });
+  }
 }

@@ -102,7 +102,8 @@ export class DashboardComponent implements OnInit {
       productName: [''],
       productPrice: [''],
       quantity: [''],
-      grandTotal: ['']
+      grandTotal: [''],
+      imgUrl:['']
     });
     localStorage.setItem('Notatoken', '2');
   }
@@ -216,6 +217,7 @@ export class DashboardComponent implements OnInit {
   putdatatoReactiveFoem() {
     this.createOrderForm.value.userName = this.userData[0].name;
     this.createOrderForm.value.PID = this.diologData.PID;
+    this.createOrderForm.value.imgUrl = this.diologData.imgUrl;
     this.createOrderForm.value.phoneNo = this.userData[0].number;
     this.createOrderForm.value.Address = `${this.doorno},${this.street},${this.city}-${this.pincode}`;
     this.createOrderForm.value.productName = this.diologData.Name;
@@ -278,6 +280,10 @@ export class DashboardComponent implements OnInit {
     this.openPaymentDiolog = false; 
     this.showError = "";
     this.showStockIssue = "";
+  }
+
+  notyet() {
+    alert('This Service is Not yet!');
   }
 }
 

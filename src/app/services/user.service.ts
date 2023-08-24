@@ -36,4 +36,14 @@ export class UserService {
   getEmployeeData(): Observable<any> {
     return this.http.get<any>(this.OrderUrl);
   }
+
+  getOrderdata(phone: string): Observable<any> {
+    const ss = `${this.OrderUrl}?phoneNo=${phone}`;
+    return this.http.get<any>(ss);
+  }
+
+  deleteOrderData(id: number): Observable<any> {
+    const dltUrl = `${this.OrderUrl}/${id}`;
+    return this.http.delete<any>(dltUrl);
+  }
 }
