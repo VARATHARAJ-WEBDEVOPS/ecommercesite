@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { AngularFireModule } from '@angular/fire/compat'
+import { firebaseConfig } from './Config/firebase-config';
+import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 
 import { AccountComponent } from './components/account/account.component';
 import { EmployeesComponent } from './components/employees/employees.component';
@@ -38,7 +41,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
     StaffLoginComponent,
     StaffDashboardComponent,
     ProductComponent,
-    DeliveryComponent
+    DeliveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +49,11 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    AngularFireModule.initializeApp( firebaseConfig.firebase ),
+    AngularFireAnalyticsModule
   ],
-  providers: [],
+  providers: [ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

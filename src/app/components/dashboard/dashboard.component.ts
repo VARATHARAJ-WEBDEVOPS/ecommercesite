@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit {
   banners: any;
   isLoading: boolean =  true;
   isPlaceOrderLoading: boolean =  false;
+  isWhishlistDiolog: boolean = false;
   openProductDiolog: boolean = false;
   openPaymentDiolog: boolean = false;
 
@@ -61,7 +63,8 @@ export class DashboardComponent implements OnInit {
     public productService: ProductService,
     public adminService: AdminService,
     private formBuilder: FormBuilder,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private analytics: AngularFireAnalytics) {
   }
 
   isSticky = false;
@@ -92,6 +95,7 @@ export class DashboardComponent implements OnInit {
     this.email = localStorage.getItem('token');
     this.getUserData();
     this.isWishlist();
+
 
     this.createOrderForm = this.formBuilder.group({
       id: [''],
@@ -124,8 +128,8 @@ export class DashboardComponent implements OnInit {
     this.diologData = product;
     this.grandTotal = product.Price;
     this.pricePerItem = product.Price;
-    console.log(product);
-    console.log(this.diologData);
+    const eventParams = { product: this.diologData.name, product_ID: this.diologData.PID };
+    this.analytics.logEvent('product_card_click',  eventParams);
     this.openProductDiolog = true;
   }
 
@@ -202,6 +206,9 @@ export class DashboardComponent implements OnInit {
         .subscribe(data => {
           this.userData = data;
           console.log(this.userData);
+          const eventParams = { page: 'UserDashboard', name: `${data[0].name}`, email: `${data[0].email}`, phoneNo: `${data[0].number}`  };
+          this.analytics.logEvent('Logged users', eventParams);
+          console.log(`Event 'button_click' logged with parameters:`, eventParams);
         });
     }
   }

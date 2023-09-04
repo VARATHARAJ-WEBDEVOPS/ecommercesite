@@ -21,6 +21,7 @@ export class AccountComponent implements OnInit {
   userData: User[] = []; 
   isLoading: boolean = false;
   isDiolog: boolean = false;
+  isWhishlistDiolog: boolean = false;
   userPhoneNumber!: string;
   OrderData: any;
   OrderGetData!: string;

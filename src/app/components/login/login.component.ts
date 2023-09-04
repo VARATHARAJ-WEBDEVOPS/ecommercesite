@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 
 interface User {
   email: string;
@@ -15,7 +16,7 @@ interface User {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, private http: HttpClient) { }
+  constructor(public router: Router, private http: HttpClient, public firebaseAnalytics: AngularFireAnalytics) { }
 
   email: string = '';
   password: string = '';
@@ -47,13 +48,8 @@ export class LoginComponent implements OnInit {
       (users: User[]) => {
         const foundUser = users.find(user => user.email === loginData.email || user.number === loginData.email && user.password === loginData.password);
         if (foundUser) {
-          if (this.rememberMe) {
-            localStorage.setItem('token', this.email);
-            this.router.navigateByUrl('/dashboard');
-          } else {
-            localStorage.setItem('Notatoken', '1');
-            this.router.navigateByUrl('/dashboard');
-          }
+          localStorage.setItem('token', this.email);
+          this.router.navigateByUrl('/dashboard');
         } else {
           this.showError = "Invalid User!";
           this.isLoading = false;
@@ -71,7 +67,7 @@ export class LoginComponent implements OnInit {
       this.showError = "Please enter your Email";
     } else if (!this.rememberMe) {
       this.showError = "please Check Keep me signed in!";
-    } else if (this.email && this.password ) {
+    } else if (this.email && this.password) {
       this.performLogin();
     } else {
       this.showError = "Invalid User!";

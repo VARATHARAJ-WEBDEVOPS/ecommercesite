@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "quick-kart-63da8"
+  },
+  "targets": {
+    "quick-kart-63da8": {
+      "hosting": {
+        "Quick-Kart": [
+          "quick-kart-63da8"
+        ]
+      }
+    }
   }
 }

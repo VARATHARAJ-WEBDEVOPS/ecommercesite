@@ -20,7 +20,7 @@
                 <i class="bi bi-truck"></i>
                 <p>Orders</p>
             </div>
-            <div class="wishlist">
+            <div class="wishlist"  (click)="isWhishlistDiolog = true">
                 <i class="bi bi-heart"></i>
                 <p>Wishlist</p>
             </div>
@@ -56,6 +56,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="deliveryDiolog" *ngIf="isWhishlistDiolog">
+        <div class="navigation">
+            <div class="back" (click)="isWhishlistDiolog = false" style="display: flex; align-items: center;">
+                <i class="bi bi-arrow-left" style="font-size: 3vh;margin: 1vh;"></i>
+            </div>
+            <div class="title">
+                <h3>Wishlists</h3>
             </div>
         </div>
     </div>

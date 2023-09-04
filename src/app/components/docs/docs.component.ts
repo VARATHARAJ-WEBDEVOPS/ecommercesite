@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +21,8 @@ export class DocsComponent implements OnInit {
 
   constructor(public router: Router,
     private userservce: UserService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private analytics: AngularFireAnalytics) { }
 
   @HostListener('window:scroll', [])
 
@@ -40,6 +42,13 @@ export class DocsComponent implements OnInit {
       Email: [''],
       Message: ['']
     });
+  }
+
+  logEvent() {
+    const eventParams = { page: 'home', name: 'lever_puzzle' };
+    this.analytics.logEvent('button_click', eventParams);
+
+    console.log(`Event 'button_click' logged with parameters:`, eventParams);
   }
 
   sendFeedback() {
