@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
+import { Title } from '@angular/platform-browser';
 
 export interface User {
   id: number;
@@ -64,7 +65,8 @@ export class DashboardComponent implements OnInit {
     public adminService: AdminService,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private analytics: AngularFireAnalytics) {
+    private analytics: AngularFireAnalytics,
+    private title: Title) {
   }
 
   isSticky = false;
@@ -78,13 +80,13 @@ export class DashboardComponent implements OnInit {
       this.router.navigateByUrl('');
       alert('un Autherized User!');
     } 
+    this.title.setTitle('Quick-Kart | Dashboard');
     
         try {
       this.adminService.getBanners().subscribe(
         (data) => {
           this.banners = data;
           this.isLoading = false;
-          console.log(this.banners);
         });
     } catch (error) {
       console.log(error)
@@ -128,9 +130,12 @@ export class DashboardComponent implements OnInit {
     this.diologData = product;
     this.grandTotal = product.Price;
     this.pricePerItem = product.Price;
-    const eventParams = { product: this.diologData.name, product_ID: this.diologData.PID };
+    const eventParams = { product: this.diologData.Name, product_ID: this.diologData.PID };
     this.analytics.logEvent('product_card_click',  eventParams);
     this.openProductDiolog = true;
+    if (this.openProductDiolog) {
+      console.log(eventParams);
+    }
   }
 
   increaseQuantity() {
@@ -205,12 +210,14 @@ export class DashboardComponent implements OnInit {
       this.userService.getUserByEmail(this.email)
         .subscribe(data => {
           this.userData = data;
-          console.log(this.userData);
-          const eventParams = { page: 'UserDashboard', name: `${data[0].name}`, email: `${data[0].email}`, phoneNo: `${data[0].number}`  };
-          this.analytics.logEvent('Logged users', eventParams);
-          console.log(`Event 'button_click' logged with parameters:`, eventParams);
+          this.userForAnalytics(data)
         });
     }
+  }
+
+  userForAnalytics(data: any) {
+    const eventParams = { page: 'UserDashboard', name: `${data[0].name}`, email: `${data[0].email}`, phoneNo: `${data[0].number}`  };
+    this.analytics.logEvent('Logged users', eventParams);
   }
 
   isWishlist() {
@@ -246,13 +253,16 @@ export class DashboardComponent implements OnInit {
     this.putdatatoReactiveFoem();
     this.userService.postOrderData(this.createOrderForm.value).subscribe(resp => {
       console.log(resp);
-      if (resp) {
+      
+        const purchaseDetails = this.createOrderForm.value;
+        this.analytics.logEvent('purchase', purchaseDetails);
         this.isPlaceOrderLoading = false;
         this.openProductDiolog = false;
         this.openPaymentDiolog = false; 
         this.quantity = 1;
         this.resetAddressForm();
-      }
+        console.log(purchaseDetails);
+        
     })
   }
 

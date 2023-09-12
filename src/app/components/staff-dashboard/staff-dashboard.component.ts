@@ -4,6 +4,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
+import { Title } from '@angular/platform-browser';
 
 export class employee {
   id!: any;
@@ -75,10 +76,12 @@ export class StaffDashboardComponent implements OnInit {
   constructor(public router: Router,
     public adminService: AdminService,
     private formBuilder: FormBuilder,
-    public productService: ProductService) { }
+    public productService: ProductService,
+    public title: Title) { }
 
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | StaffDashboard');
     if (localStorage.getItem('staff') === null) {
       this.router.navigateByUrl('');
     }

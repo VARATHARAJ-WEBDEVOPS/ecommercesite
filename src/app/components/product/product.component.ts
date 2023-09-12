@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product',
@@ -16,9 +17,11 @@ export class ProductComponent implements OnInit {
   searchTerm: string = '';
   isLoading: boolean = true;
 
-  constructor(private productService: ProductService, public router: Router) { }
+  constructor(private productService: ProductService, public router: Router,  public title: Title) { }
 
-  ngOnInit() {
+  ngOnInit() {   
+     this.title.setTitle('Quick-Kart | Product');
+
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }

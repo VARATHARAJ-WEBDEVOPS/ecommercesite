@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
+import { Title } from '@angular/platform-browser';
 
 interface User {
   email: string;
@@ -16,7 +17,8 @@ interface User {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, private http: HttpClient, public firebaseAnalytics: AngularFireAnalytics) { }
+  constructor(public router: Router, private http: HttpClient, public firebaseAnalytics: AngularFireAnalytics,
+    public title: Title) { }
 
   email: string = '';
   password: string = '';
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart |Login');
     if (localStorage.getItem('token')) {
       this.router.navigateByUrl('/dashboard');
     }

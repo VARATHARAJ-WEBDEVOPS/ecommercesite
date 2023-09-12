@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 interface User {
   Phone: string;
@@ -19,7 +20,7 @@ export class StaffLoginComponent implements OnInit {
 
   showError: string = '';
 
-  constructor(public router: Router, private http: HttpClient) { }
+  constructor(public router: Router, private http: HttpClient,  public title: Title) { }
 
   onSubmit() {
     this.validation();
@@ -55,6 +56,7 @@ export class StaffLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart |StaffLogin');
     if (localStorage.getItem('staff')) {
       this.router.navigateByUrl('/staffdashboard');
     }

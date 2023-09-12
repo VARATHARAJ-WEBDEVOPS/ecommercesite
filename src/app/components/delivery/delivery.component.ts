@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-delivery',
@@ -13,9 +13,10 @@ export class DeliveryComponent implements OnInit {
   deliveryData :any;
   isLoading: boolean = true;
 
-  constructor(public router: Router, public userService: UserService) { }
+  constructor(public router: Router, public userService: UserService,  public title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | Delivery');
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }

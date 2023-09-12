@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-login',
@@ -13,7 +14,7 @@ export class AdminLoginComponent implements OnInit {
 
   showError: string = '';
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,  public title: Title) { }
 
   onSubmit() {
     this.validation();
@@ -35,6 +36,7 @@ export class AdminLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | AdminLogin');
     if (localStorage.getItem('admin')) {
       this.router.navigateByUrl('/admindashboard');
     }

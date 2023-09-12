@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 interface User {
   name: string
@@ -31,10 +32,11 @@ export class SignupComponent implements OnInit {
   constructor(public router: Router,
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    public title: Title) { }
 
   ngOnInit(): void {
-
+    this.title.setTitle('Quick-Kart | Signup');
     if (localStorage.getItem('token')) {
       this.router.navigateByUrl('/dashboard');
     }

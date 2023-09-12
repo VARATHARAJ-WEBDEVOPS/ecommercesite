@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Title } from '@angular/platform-browser';
 
 export interface User {
   id: number;
@@ -26,7 +27,7 @@ export class AccountComponent implements OnInit {
   OrderData: any;
   OrderGetData!: string;
 
-  constructor(public router: Router, public userService: UserService) { }
+  constructor(public router: Router, public userService: UserService, public title: Title) { }
 
   logout() {
     localStorage.removeItem('token');
@@ -34,6 +35,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | Account');
     if (localStorage.getItem('token') === null){
       this.router.navigateByUrl('/')
     }

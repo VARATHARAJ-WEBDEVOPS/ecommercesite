@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 export class employee {
   id!: any;
@@ -50,7 +51,8 @@ export class EmployeesComponent implements OnInit {
   constructor(public router: Router,
     public adminService: AdminService,
     private http: HttpClient,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    public title: Title) { }
 
   toggleDialog(employee: any) {
     this.selectedUser = employee;
@@ -68,6 +70,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | Employees');
     this.getAll();
     this.createEmployeeForm = this.formBuilder.group({
       Name: [''],

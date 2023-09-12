@@ -25,6 +25,7 @@
     background-color: rgb(247, 251, 255);
 }
 
+
 .nav button, #change {
     padding-inline: 2vh;
     padding-block: 2vh;
@@ -150,4 +151,12 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .content .left img{
+    cursor: pointer;
+  }
+
+  .content .left img:hover{
+    border: 2px solid pink;
   }

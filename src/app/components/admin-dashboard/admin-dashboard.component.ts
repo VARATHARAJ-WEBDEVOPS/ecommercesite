@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,9 +12,10 @@ export class AdminDashboardComponent implements OnInit {
   feedbackData: any = [];
   isLoading: boolean = true;
 
-  constructor(public router: Router, public adminService: AdminService) { }
+  constructor(public router: Router, public adminService: AdminService,  public title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | AdminDashboard');
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }

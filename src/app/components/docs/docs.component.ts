@@ -3,6 +3,7 @@ import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-docs',
@@ -22,7 +23,8 @@ export class DocsComponent implements OnInit {
   constructor(public router: Router,
     private userservce: UserService,
     private fb: FormBuilder,
-    private analytics: AngularFireAnalytics) { }
+    private analytics: AngularFireAnalytics,
+    public title: Title) { }
 
   @HostListener('window:scroll', [])
 
@@ -34,6 +36,7 @@ export class DocsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | Docs');
     if (localStorage.getItem('token')) {
       this.router.navigateByUrl('/dashboard');
     }
@@ -44,12 +47,6 @@ export class DocsComponent implements OnInit {
     });
   }
 
-  logEvent() {
-    const eventParams = { page: 'home', name: 'lever_puzzle' };
-    this.analytics.logEvent('button_click', eventParams);
-
-    console.log(`Event 'button_click' logged with parameters:`, eventParams);
-  }
 
   sendFeedback() {
     if (this.Name === "") {

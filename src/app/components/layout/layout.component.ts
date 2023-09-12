@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-layout',
@@ -9,13 +10,14 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public router: Router, public adminService: AdminService) { }
+  constructor(public router: Router, public adminService: AdminService,  public title: Title) { }
 
   banners: any;
   updatedBanners: any = {};
   isLoading: boolean = true;
 
   ngOnInit(): void {
+    this.title.setTitle('Quick-Kart | Layout');
     if (localStorage.getItem('admin') === null) {
       this.router.navigateByUrl('/adminlogin');
     }
