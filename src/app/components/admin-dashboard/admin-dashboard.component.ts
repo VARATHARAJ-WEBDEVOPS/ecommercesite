@@ -34,4 +34,9 @@ export class AdminDashboardComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
+  navigateToGoogleAnalytics() {
+    const googleAnalyticsURL = 'https://analytics.google.com/analytics/web/?authuser=1#/p401454347/reports/reportinghub?params=_u..nav%3Dmaui';
+    window.location.href = googleAnalyticsURL;
+  }
 }
