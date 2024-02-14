@@ -19,13 +19,16 @@ export interface User {
 export class AccountComponent implements OnInit {
 
   email!: string | null;
-  userData: User[] = []; 
+  userData: User[] = [];
   isLoading: boolean = false;
   isDiolog: boolean = false;
   isWhishlistDiolog: boolean = false;
   userPhoneNumber!: string;
   OrderData: any;
   OrderGetData!: string;
+  userName: any;
+  picture!: string | null;
+  name!: any;
 
   constructor(public router: Router, public userService: UserService, public title: Title) { }
 
@@ -36,11 +39,15 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Quick-Kart | Account');
-    if (localStorage.getItem('token') === null){
+    if (localStorage.getItem('token') === null) {
       this.router.navigateByUrl('/')
     }
-    this.email = localStorage.getItem('token');
+    this.name = JSON.parse(localStorage.getItem("name") || "");
+    this.email = JSON.parse(localStorage.getItem("email") || "");
+    this.picture = JSON.parse(localStorage.getItem("picture") || "");
+
     this.getUserData();
+
   }
 
   getUserData(): void {
@@ -56,14 +63,14 @@ export class AccountComponent implements OnInit {
   }
 
   getOrderdata(phone: any) {
-    this.userService.getOrderdata(phone).subscribe( res => {
+    this.userService.getOrderdata(phone).subscribe(res => {
       console.log(res);
       this.OrderData = res;
     });
   }
-  
+
   cancelOrder(id: any) {
-    this.userService.deleteOrderData(id).subscribe( res => {
+    this.userService.deleteOrderData(id).subscribe(res => {
       this.getUserData();
       alert('Order Canceled Successfully!')
       console.log(res);

@@ -7,11 +7,19 @@
         <h1 id="title">User's Profile</h1>
     </div>
     <div class="top">
-        <div class="profileRound">
+        <div class="profileRound" *ngIf="!picture">
             <i class="bi bi-person-fill" id="user"></i>
         </div>
+        <div class="profileRound" *ngIf="picture" [style.background-image]="'url(' + picture + ')'">
+           
+        </div>
     </div>
-    <div class="bottom" *ngIf="userData.length > 0">
+    <div class="bottom" >
+
+        <h1 >Hey! {{ name }}</h1>
+        <p >{{ email }}</p>
+        <p *ngFor="let user of userData">{{ user.number }}</p>
+
         <h1 *ngFor="let user of userData">Hey! {{ user.name }}</h1>
         <p *ngFor="let user of userData">{{ user.email }}</p>
         <p *ngFor="let user of userData">{{ user.number }}</p>

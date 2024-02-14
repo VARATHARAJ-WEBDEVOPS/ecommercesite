@@ -15,14 +15,19 @@
                 </div>
             </div>
             <div class="supportAndAccount2" (click)="this.router.navigateByUrl('/account');">
-                <div class="icon">
+                <div class="icon" *ngIf="!picture">
                     <i class="bi bi-person"></i>
+                </div>
+
+                <div class="profilePic" *ngIf="picture" [style.background-image]="'url(' + picture + ')'">
+                   
                 </div>
                 <div class="text">
                     <h4>Account</h4>
                     <p>sign in</p>
                 </div>
             </div>
+            
         </div>
     </div> <!---------------Title Bar Ends------------->
 

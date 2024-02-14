@@ -6,17 +6,30 @@
     <div class="right">
         <h1>Login Account</h1>
         <form (ngSubmit)="onSubmit()">
-            <input type="email" name="email" [(ngModel)]="email"  placeholder="Email or Phone Number" id="input">
-            <input type="password"  name="password" [(ngModel)]="password" placeholder="Password" id="input">
+
+            <div class="googleLoginContaine">
+                <div id="g_id_onload"
+                    data-client_id="126450273937-a25p9pjsjpsuh23nit4ghtd1otaausr5.apps.googleusercontent.com"
+                    data-context="use" data-ux_mode="popup" data-login_uri="https://nodeapiv1.onrender.com/api/login"
+                    data-itp_support="true" data-callback="handleCredentialResponse">
+                </div>
+
+                <div class="g_id_signin" data-type="standard" data-shape="Rectangular" data-theme="filled_blue"
+                    data-text="continue_with" data-size="large" data-logo_alignment="left">
+                </div>
+            </div>
+            <input type="email" name="email" [(ngModel)]="email" placeholder="Email or Phone Number" id="input">
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Password" id="input">
             <p id="error">{{showError}}</p>
             <div class="spesific">
                 <div id="spesific_left">
-                    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" id="check" [ngModelOptions]="{ standalone: true }">
+                    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" id="check"
+                        [ngModelOptions]="{ standalone: true }">
                     <p>Keep me signed in</p>
-                </div>             
+                </div>
                 <p (click)="moveToSignup()">New member?</p>
             </div>
-            <button type="submit"  *ngIf="!isLoading">LOGIN</button>
+            <button type="submit" *ngIf="!isLoading">LOGIN</button>
             <div class="loading-spinner" *ngIf="isLoading">
                 <div class="spinner"></div>
             </div>

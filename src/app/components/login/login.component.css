@@ -36,6 +36,12 @@
     flex-direction: column;
 }
 
+.googleLoginContaine {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
 .spesific {
     display: flex;
     justify-content: space-between;
@@ -65,7 +71,7 @@ p {
 
 h1 {
     color: rgb(13, 110, 253);
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     font-weight: bold;
 }
 

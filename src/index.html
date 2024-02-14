@@ -6,6 +6,26 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://accounts.google.com/gsi/client" async></script>
+
+  <script>
+    function decodeJWTToken(token) {
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+    function handleCredentialResponse(response) {
+      // to decode the credential response.
+      const responsePayload = decodeJWTToken(response.credential);
+      sessionStorage.setItem("loggedInUser", JSON.stringify(responsePayload));
+      localStorage.setItem("name", JSON.stringify(responsePayload.name));
+      localStorage.setItem("email", JSON.stringify(responsePayload.email));
+      localStorage.setItem("picture", JSON.stringify(responsePayload.picture));
+      localStorage.setItem("token", JSON.stringify(responsePayload.email))
+      window.location.href = "/dashboard";
+    }
+    function handleSignout() {
+      google.accounts.id.disableAutoSelect();
+    }    
+  </script>
 </head>
 <body>
   <app-root></app-root>

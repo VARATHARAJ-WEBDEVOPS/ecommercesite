@@ -57,6 +57,7 @@ export class DashboardComponent implements OnInit {
 
   createOrderForm!: FormGroup;
   postMessage: any;
+  picture: any;
 
 
   constructor(public router: Router,
@@ -81,6 +82,7 @@ export class DashboardComponent implements OnInit {
       alert('un Autherized User!');
     } 
     this.title.setTitle('Quick-Kart | Dashboard');
+    this.picture = JSON.parse(localStorage.getItem("picture") || "");
     
         try {
       this.adminService.getBanners().subscribe(

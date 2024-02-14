@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
@@ -15,9 +15,9 @@ interface User {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,  AfterViewInit {
 
-  constructor(public router: Router, private http: HttpClient, public firebaseAnalytics: AngularFireAnalytics,
+  constructor(public router: Router,private renderer: Renderer2, private http: HttpClient, public firebaseAnalytics: AngularFireAnalytics,
     public title: Title) { }
 
   email: string = '';
@@ -30,6 +30,18 @@ export class LoginComponent implements OnInit {
   moveToSignup() {
     this.router.navigateByUrl('/signup')
   }
+
+  ngAfterViewInit(): void {
+    this.addGoogleSignInScript();
+  }
+
+  private addGoogleSignInScript(): void {
+    const script = this.renderer.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    this.renderer.appendChild(document.head, script);
+  }
+
 
   ngOnInit(): void {
     this.title.setTitle('Quick-Kart |Login');

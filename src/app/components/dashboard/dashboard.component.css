@@ -48,6 +48,16 @@
     margin-inline: 2vh;
 }
 
+.profilePic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-inline: 2vh;
+}
+
 .titlebar .right h1 {
     font-size: 1vh;
     font-weight: 200;
@@ -705,7 +715,6 @@ select:focus {
     .products-container .card {
         width: 95%;
         height: 20vh;
-        ;
         margin: 1vh;
     }
 
